@@ -1,9 +1,6 @@
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <!-- CSS Files -->
+  <!-- Custom fonts for this template-->
+  <link href="{{ asset('assets-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets-admin/css/paper-dashboard.css') }}?" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{  asset('assets-admin/demo/demo.css')}}" rel="stylesheet" />
+  <!-- Custom styles for this template-->
+  <link href="{{ asset('assets-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">

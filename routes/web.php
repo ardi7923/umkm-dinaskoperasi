@@ -22,6 +22,10 @@ Route::get('/', 'Front\HomeController@index');
 Route::group(['middleware' => 'auth'], function () { 
 
 	Route::get('dashboard','Admin\DashboardController@index');
+
+	Route::resource('admin/category','Admin\CategoryController');
+
+	
 });
 
 
