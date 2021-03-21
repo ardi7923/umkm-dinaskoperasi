@@ -32,6 +32,12 @@
           <span>Verifikasi Umkm</span></a>
       </li>
 
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/data-umkm') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Data Umkm</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

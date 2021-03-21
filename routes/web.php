@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
 		Route::resource('category','CategoryController');
 		Route::resource('verify-umkm','VerifyUmkmController');
+		Route::resource('data-umkm','DataUmkmController');
 	});
 	
 

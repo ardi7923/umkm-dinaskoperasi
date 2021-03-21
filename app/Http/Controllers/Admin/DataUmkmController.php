@@ -9,21 +9,21 @@ use CrudService;
 use MainService;
 use DataTables;
 use File;
-Use ResponseService;
+use ResponseService;
 
-class VerifyUmkmController extends Controller
+class DataUmkmController extends Controller
 {
     private $model,
             $crud_service,
             $folder,
             $facade,
-            $url = 'admin/category/';
+            $url = 'admin/data-umkm/';
 
     public function __construct(Umkm $model,CrudService $crud_service)
     {
         $this->model        = $model;
         $this->crud_service = $crud_service;
-        $this->folder       = 'pages.admin.category.';
+        $this->folder       = 'pages.admin.data-umkm.';
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class VerifyUmkmController extends Controller
         if($request->ajax()){
             return $this->datatable();
         }
-        return view('pages.admin.verify-umkm.index');
+        return view($this->folder.'index');
     }
 
     /**
@@ -45,7 +45,7 @@ class VerifyUmkmController extends Controller
      */
     public function create()
     {
-        
+        return MainService::renderToJson($this->folder.'create');
     }
 
     /**
@@ -56,7 +56,9 @@ class VerifyUmkmController extends Controller
      */
     public function store(Request $request)
     {
-        
+        return $this->crud_service->setModel($this->model)
+                            ->setRequest( $request )
+                            ->save();
     }
 
     /**
@@ -67,7 +69,8 @@ class VerifyUmkmController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = $this->model->find($id);
+        return MainService::renderToJson($this->folder.'show',compact('data'));
     }
 
     /**
@@ -79,7 +82,7 @@ class VerifyUmkmController extends Controller
     public function edit($id)
     {
         $data = $this->model->find($id);
-        return MainService::renderToJson('pages.admin.verify-umkm.accept',compact('data'));
+        return MainService::renderToJson($this->folder.'edit',compact('data'));
     }
 
     /**
@@ -91,13 +94,11 @@ class VerifyUmkmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->request->add([ 'verify' => 1 ]);
-
         return $this->crud_service
-                            ->setModel( $this->model )
-                            ->setRequest( $request )
-                            ->setParams([ 'id' => $id])
-                            ->update();
+                    ->setModel( $this->model )
+                    ->setRequest( $request )
+                    ->setParams([ 'id' => $id ])
+                    ->update();
     }
 
     /**
@@ -132,17 +133,17 @@ class VerifyUmkmController extends Controller
      */
     public function datatable()
     {
-        $data = $this->model->query()->unverify();
+        $data = $this->model->query()->verify();
         return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', function ($data)  {
-                                return '<button 
-                                            class     = "btn btn-circle btn-sm btn-success show_from"
+                            return '<button 
+                                            class     = "btn btn-circle btn-sm btn-info show_from"
                                             data-size="lg"
-                                            data-url  = '. url("admin/verify-umkm/$data->id/edit") .'
-                                            data-toggle="tooltip" title="Verifikasi"
+                                            data-url  = '. url("admin/data-umkm/$data->id") .'
+                                            data-toggle="tooltip" title="Lihat Data"
                                             > 
-                                            <i class  = "fa fa-check"> </i> 
+                                            <i class  = "fa fa-eye"> </i> 
                                        </button>
 
                                        <button 
@@ -151,20 +152,19 @@ class VerifyUmkmController extends Controller
                                                 data-toggle    ="tooltip" 
                                                 data-placement ="top" 
                                                 data-type      = "reload"
-                                                title          =  "Tolak"
-                                                data-url       = '. url("admin/verify-umkm/$data->id") .'
+                                                title          =  "Hapus Data"
+                                                data-url       = '. url("admin/data-umkm/$data->id") .'
                                                 data-text      = "'. self::delete($data)  .'">
-                                                <i class="fa fa-times"></i>
-                                        </button>
-
-                                       ';
+                                                <i class="fa fa-trash"></i>
+                                        </button>';
                             })
                         ->make(true);
+
     }
+
 
     private static function delete($data)
     {
-        return view("pages.admin.verify-umkm.reject",compact('data'))->render();
+        return view("pages.admin.data-umkm.delete",compact('data'))->render();
     }
-
 }
