@@ -4,7 +4,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <img src="{{ asset('logo.png') }}" width="50px" alt="">
-        <div class="sidebar-brand-text mx-3">Smansa</div>
+        <div class="sidebar-brand-text mx-3">UMKM </div>
       </a>
 
       <!-- Divider -->
@@ -24,6 +24,12 @@
         <a class="nav-link" href="{{ url('admin/category') }}">
           <i class="fas fa-fw fa-users"></i>
           <span>Kategori</span></a>
+      </li>
+
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/verify-umkm') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Verifikasi Umkm</span></a>
       </li>
 
       <!-- Divider -->

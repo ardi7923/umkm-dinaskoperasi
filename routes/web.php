@@ -28,7 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('dashboard','Admin\DashboardController@index');
 
-	Route::resource('admin/category','Admin\CategoryController');
+	Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
+		Route::resource('category','CategoryController');
+		Route::resource('verify-umkm','VerifyUmkmController');
+	});
+	
 
 	
 });
