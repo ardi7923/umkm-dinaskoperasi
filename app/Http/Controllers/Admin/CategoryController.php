@@ -4,16 +4,35 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use CrudService;
+use MainService;
+use DataTables;
 
 class CategoryController extends Controller
 {
+    private $model,
+            $crud_service,
+            $folder,
+            $facade,
+            $url = 'admin/category/';
+
+    public function __construct(Category $model,CrudService $crud_service)
+    {
+        $this->model        = $model;
+        $this->crud_service = $crud_service;
+        $this->folder       = 'pages.admin.category.';
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax()){
+            return $this->datatable();
+        }
         return view('pages.admin.category.index');
     }
 
@@ -24,7 +43,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return MainService::renderToJson($this->folder.'create');
     }
 
     /**
@@ -35,7 +54,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->crud_service->setModel($this->model)
+                            ->setRequest( $request )
+                            ->save();
     }
 
     /**
@@ -57,7 +78,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->model->find($id);
+        return MainService::renderToJson($this->folder.'edit',compact('data'));
     }
 
     /**
@@ -69,7 +91,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->crud_service
+                    ->setModel( $this->model )
+                    ->setRequest( $request )
+                    ->setParams([ 'id' => $id ])
+                    ->update();
     }
 
     /**
@@ -80,6 +106,30 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->crud_service
+                    ->setModel( $this->model )
+                    ->setParams([ 'id' => $id ])
+                    ->delete();
+    }
+    /**
+     * data json for datatable.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function datatable()
+    {
+        $data = $this->model->query();
+        return Datatables::of($data)
+                        ->addIndexColumn()
+                        ->addColumn('action', function ($data)  {
+                            return view('components.datatables.action', [
+                                'data'        => $data,
+                                'url_edit'    => url($this->url.$data->id.'/edit'),
+                                'url_destroy' => url($this->url.$data->id),
+                                'delete_text' => view($this->folder.'delete',compact('data'))->render()
+                                ]);
+                            })
+                        ->make(true);
     }
 }

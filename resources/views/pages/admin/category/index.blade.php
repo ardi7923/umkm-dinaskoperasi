@@ -18,19 +18,17 @@
         <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Pengurus Organisasi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Kategori</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <button type="button" data-url = "{{ url('organization-committe/create') }}" data-size="md" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
+                <button type="button" data-url = "{{ url('admin/category/create') }}" data-size="md" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
                 <br><br>
                 <table class="table table-bordered table-hover" id="myTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th width="50px">No</th>
                       <th >Nama</th>
-                      <th>Username</th>
-                      <th>Organisasi</th>
                       <th width="150px">Action</th>
                     </tr>
                   </thead>
@@ -66,13 +64,11 @@
        var table   =  $('#myTable').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url("organization-committe") }}',
+                            ajax: '{{ url("admin/category") }}',
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },
                                 { data: 'name' },
-                                { data: 'username' },
-                                { data: 'organization.name' },
                                 {data : 'action',orderable: false, searchable: false}
                             ]
                         });

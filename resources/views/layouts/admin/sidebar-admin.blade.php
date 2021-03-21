@@ -21,36 +21,9 @@
       <hr class="sidebar-divider">
 
       <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('organization-committe') }}">
+        <a class="nav-link" href="{{ url('admin/category') }}">
           <i class="fas fa-fw fa-users"></i>
-          <span>Pengurus</span></a>
-      </li>
-
-      <li class="nav-item" id="post">
-        <a class="nav-link" href="{{ url('post') }}">
-          <i class="fas fa-fw fa-image"></i>
-          <span>Postingan</span></a>
-      </li>
-
-      <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('student') }}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Siswa</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('data-training') }}">
-          <i class="fas fa-fw fa-list"></i>
-          <span>Data Training</span></a>
-      </li>
-
-      <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('result-navybayes') }}">
-          <i class="fas fa-fw fa-calculator"></i>
-          <span>Hitung Naive bayes</span></a>
+          <span>Kategori</span></a>
       </li>
 
       <!-- Divider -->
