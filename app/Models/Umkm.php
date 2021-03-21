@@ -15,4 +15,10 @@ class Umkm extends Model
      */
     protected $guarded = [
     ];
+
+
+    public function scopeVerify($query)
+    {
+    	return $query->where('verify',1);
+    }
 }

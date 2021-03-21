@@ -7,7 +7,7 @@
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
 													<li><a href="#">Produk</a></li>												
-													<li><a href="#">Umkm</a></li>
+													<li class="{{ Request::is('umkm') ? 'active' : '' }}"><a href="{{ url('umkm') }}">Umkm</a></li>
 											<!-- 		<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="cart.html">Cart</a></li>
