@@ -5,7 +5,7 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
 													<li><a href="#">Produk</a></li>												
 													<li><a href="#">Umkm</a></li>
 											<!-- 		<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -14,7 +14,7 @@
 															<li><a href="checkout.html">Checkout</a></li>
 														</ul>
 													</li> -->
-													<li><a href="#">Daftar Mitra</a></li>									
+													<li class="{{ Request::is('registration-umkm') ? 'active' : '' }}"><a href="{{ url('registration-umkm') }}">Daftar Mitra</a></li>									
 													<!-- <li><a href="#">Blog<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>

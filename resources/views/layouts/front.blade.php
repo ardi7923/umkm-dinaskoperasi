@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
+    <title>@yield('title') - Umkm Sulsel</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
@@ -17,7 +17,7 @@
 	<!-- StyleSheet -->
 	
 	@include('layouts.front.styles')
-	
+	@yield('styles_page')
 	
 </head>
 <body class="js">
@@ -41,5 +41,7 @@
 @include('layouts.front.footer')
  
 @include('layouts.front.scripts')
+@yield('scripts_page')
+@yield('js')
 </body>
 </html>

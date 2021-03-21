@@ -18,6 +18,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/', 'Front\HomeController@index');
 
+Route::get('registration-umkm', 'Front\RegistrationUmkmController@index');
+Route::post('registration-umkm', 'Front\RegistrationUmkmController@store');
+Route::get('registration-umkm/success', 'Front\RegistrationUmkmController@success');
 
 Route::group(['middleware' => 'auth'], function () { 
 
