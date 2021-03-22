@@ -22,12 +22,14 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                
+                <button type="button" data-url = "{{ url('admin/user-umkm/create') }}" data-size="md" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
+                <br><br>
                 <table class="table table-bordered table-hover" id="myTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th width="50px">No</th>
                       <th >Nama</th>
+                      <th >Username</th>
                       <th >Nama Toko</th>
                       <th width="150px">Action</th>
                     </tr>
@@ -64,19 +66,21 @@
        var table   =  $('#myTable').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url("admin/data-umkm") }}',
+                            ajax: '{{ url("admin/user-umkm") }}',
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },
                                 { data: 'name' },
-                                { data: 'store_name' },
+                                { data: 'username' },
+                                { data: 'umkm.store_name' },
                                 {data : 'action',orderable: false, searchable: false}
                             ]
                         });
     });
 
     $(".modal_add").click(showForm);
-    $('body').on("click",".show_from", showForm);
+    $('body').on("click",".btn_edit", showForm);
+
     $('body').on("click",".btn_delete", deleteForm );
 
     $('#modals').on("submit",".forms",saveForm);

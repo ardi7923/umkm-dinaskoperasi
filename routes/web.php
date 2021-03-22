@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('category','CategoryController');
 		Route::resource('verify-umkm','VerifyUmkmController');
 		Route::resource('data-umkm','DataUmkmController');
+		Route::resource('user-umkm','UserUmkmController');
 	});
 	
 
