@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('data-umkm','DataUmkmController');
 		Route::resource('user-umkm','UserUmkmController');
 	});
+
+	Route::group(['namespace' => 'Umkm','prefix' => 'umkm'],function(){
+		Route::resource('product-submission','ProductSubmissionController');
+	});
 	
 
 	

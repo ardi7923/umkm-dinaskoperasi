@@ -21,8 +21,11 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
+    @if(Auth::user()->role == 'ADMIN')
       @include('layouts.admin.sidebar-admin')
-
+    @else
+      @include('layouts.admin.sidebar-umkm')
+    @endif
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
