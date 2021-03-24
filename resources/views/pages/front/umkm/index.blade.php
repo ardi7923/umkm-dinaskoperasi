@@ -17,23 +17,36 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-	@foreach($umkms as $u)
-	<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-		<div class="single-product">
-			<div class="product-img">
-				<a href="#">
-					<img class="default-img" src="{{ asset($u->logo) }}" alt="#">
-					<img class="hover-img" src="{{ asset($u->logo) }}" alt="#">
-				</a>
-
+	<section>
+		
+	
+	<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>From Our Blog</h2>
+					</div>
+				</div>
 			</div>
-			<div class="product-content">
-				<center> 
-					<h3><a href="#">{{ $u->store_name }}</a></h3>
-				</center>
+			<div class="row">
+				@foreach($umkms as $u)
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Blog  -->
+					<div class="shop-single-blog">
+						<img src="https://via.placeholder.com/370x300" alt="#">
+						<div class="content">
+							<p class="date">22 July , 2020. Monday</p>
+							<a href="#" class="title">Sed adipiscing ornare.</a>
+							<a href="#" class="more-btn">Continue Reading</a>
+						</div>
+					</div>
+					<!-- End Single Blog  -->
+				</div>
+				@endforeach
+
+					<!-- End Single Blog  -->
+				</div>
 			</div>
 		</div>
-	</div>
-	<br><br><br>
-	@endforeach
+</section>
 @endsection
