@@ -56,6 +56,12 @@
           <span>Data Produk</span></a>
       </li>
 
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/bank') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Bank</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
