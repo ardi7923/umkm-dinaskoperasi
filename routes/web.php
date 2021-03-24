@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['namespace' => 'Umkm','prefix' => 'umkm'],function(){
 		Route::resource('product-submission','ProductSubmissionController');
+		Route::resource('product','ProductController');
 	});
 	
 

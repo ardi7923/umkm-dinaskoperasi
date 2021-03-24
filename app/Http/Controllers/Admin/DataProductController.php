@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Umkm;
+use App\Models\Product;
 use CrudService;
 use MainService;
 use DataTables;
@@ -19,7 +19,7 @@ class DataProductController extends Controller
             $facade,
             $url = 'admin/data-product/';
 
-    public function __construct(Umkm $model,CrudService $crud_service)
+    public function __construct(Product $model,CrudService $crud_service)
     {
         $this->model        = $model;
         $this->crud_service = $crud_service;
@@ -111,7 +111,7 @@ class DataProductController extends Controller
     {
         try {
             $data = $this->model->find($id);
-            File::delete($data->logo);
+            File::delete($data->image);
             $data->delete();
 
             return $response->setCode(200)
@@ -133,14 +133,17 @@ class DataProductController extends Controller
      */
     public function datatable()
     {
-        $data = $this->model->query()->verify();
+        $data = $this->model->query()->verified()->with('umkm','category');
         return Datatables::of($data)
                         ->addIndexColumn()
+                        ->addColumn('show_price',function($data){
+                        	return number_format($data->price);
+                        })
                         ->addColumn('action', function ($data)  {
                             return '<button 
                                             class     = "btn btn-circle btn-sm btn-info show_from"
                                             data-size="lg"
-                                            data-url  = '. url("admin/data-umkm/$data->id") .'
+                                            data-url  = '. url("admin/data-product/$data->id") .'
                                             data-toggle="tooltip" title="Lihat Data"
                                             > 
                                             <i class  = "fa fa-eye"> </i> 
@@ -153,7 +156,7 @@ class DataProductController extends Controller
                                                 data-placement ="top" 
                                                 data-type      = "reload"
                                                 title          =  "Hapus Data"
-                                                data-url       = '. url("admin/data-umkm/$data->id") .'
+                                                data-url       = '. url("admin/data-product/$data->id") .'
                                                 data-text      = "'. self::delete($data)  .'">
                                                 <i class="fa fa-trash"></i>
                                         </button>';
@@ -165,6 +168,6 @@ class DataProductController extends Controller
 
     private static function delete($data)
     {
-        return view("pages.admin.data-umkm.delete",compact('data'))->render();
+        return view("pages.admin.data-product.delete",compact('data'))->render();
     }
 }
