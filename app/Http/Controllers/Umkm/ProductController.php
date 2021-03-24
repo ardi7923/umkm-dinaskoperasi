@@ -5,30 +5,26 @@ namespace App\Http\Controllers\Umkm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Umkm;
-use App\Models\Category;
 use CrudService;
-use MainService;
 use DataTables;
-use App\Http\Requests\ProductSubmissionRequest;
-use App\Services\Facades\ProductSubmissionService;
+use MainService;
 
-class ProductSubmissionController extends Controller
+class ProductController extends Controller
 {
     private $model,
-            $crud_service,
-            $folder,
-            $validator,
-            $facade,
-            $url = 'umkm/product-submission/';
+        $crud_service,
+        $folder,
+        $validator,
+        $facade,
+        $url = 'umkm/product/';
 
-    public function __construct(Product $model,CrudService $crud_service,ProductSubmissionRequest $validator,ProductSubmissionService $facade)
+    public function __construct(Product $model,CrudService $crud_service)
     {
         $this->model        = $model;
         $this->crud_service = $crud_service;
-        $this->folder       = 'pages.umkm.product-submission.';
-        $this->validator    = $validator;
-        $this->facade       = $facade;
+        $this->folder       = 'pages.umkm.product.';
+        // $this->validator    = $validator;
+        // $this->facade       = $facade;
     }
     /**
      * Display a listing of the resource.
@@ -40,7 +36,7 @@ class ProductSubmissionController extends Controller
         if($request->ajax()){
             return $this->datatable();
         }
-        return view($this->folder.'index');
+        return view('pages.umkm.product.index');
     }
 
     /**
@@ -50,8 +46,7 @@ class ProductSubmissionController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return MainService::renderToJson($this->folder.'create',compact('categories'));
+        //
     }
 
     /**
@@ -62,11 +57,7 @@ class ProductSubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->crud_service->setModel($this->model)
-                            ->setRequest( $request )
-                            ->setValidator( $this->validator )
-                            ->setFacade( $this->facade )
-                            ->save();
+        //
     }
 
     /**
@@ -77,7 +68,9 @@ class ProductSubmissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = $this->model->with('category','umkm')->find($id);
+
+        return MainService::renderToJson($this->folder.'show',compact('data'));
     }
 
     /**
@@ -88,9 +81,7 @@ class ProductSubmissionController extends Controller
      */
     public function edit($id)
     {
-        $data       = $this->model->find($id);
-        $categories = Category::all();
-        return MainService::renderToJson($this->folder.'edit',compact('data','categories'));
+        //
     }
 
     /**
@@ -102,13 +93,7 @@ class ProductSubmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $this->crud_service
-                    ->setModel( $this->model )
-                    ->setRequest( $request )
-                    ->setValidator( $this->validator )
-                    ->setFacade( $this->facade )
-                    ->setParams([ 'id' => $id ])
-                    ->update();
+        //
     }
 
     /**
@@ -119,12 +104,7 @@ class ProductSubmissionController extends Controller
      */
     public function destroy($id)
     {
-
-        return $this->crud_service
-                    ->setModel( $this->model )
-                    ->setParams([ 'id' => $id ])
-                    ->setFacade( $this->facade )
-                    ->delete();
+        //
     }
     /**
      * data json for datatable.
@@ -134,7 +114,7 @@ class ProductSubmissionController extends Controller
      */
     public function datatable()
     {
-        $data = $this->model->query()->unverified()->with('category');
+        $data = $this->model->query()->verified()->with('category');
         return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('show_image', function ($data) {
@@ -144,12 +124,14 @@ class ProductSubmissionController extends Controller
                             return number_format($data->umkm_price);
                         })
                         ->addColumn('action', function ($data)  {
-                            return view('components.datatables.action', [
-                                'data'        => $data,
-                                'url_edit'    => url($this->url.$data->id.'/edit'),
-                                'url_destroy' => url($this->url.$data->id),
-                                'delete_text' => view($this->folder.'delete',compact('data'))->render()
-                                ]);
+                            return '<button 
+                                            class     = "btn btn-circle btn-sm btn-info show_form"
+                                            data-size="lg"
+                                            data-url  = '. url("umkm/product/$data->id") .'
+                                            data-toggle="tooltip" title="Lihat Data"
+                                            > 
+                                            <i class  = "fa fa-eye"> </i> 
+                                       </button>';
                             })
                         ->rawColumns(['show_image','action','show_umkm_price'])
                         ->make(true);

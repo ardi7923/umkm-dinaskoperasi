@@ -3,7 +3,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; SMAN 1 TOBADAK</span>
+            <span>Copyright &copy; UMKM SULSEL</span>
           </div>
         </div>
       </footer>
