@@ -27,4 +27,14 @@ class Product extends Model
     {
         return $this->belongsTo(Umkm::class);
     }
+
+    public function scopeVerified($query)
+    {
+    	return $query->where('verified',1);
+    }
+
+    public function scopeUnverified($query)
+    {
+    	return $query->where('verified',0);
+    }
 }

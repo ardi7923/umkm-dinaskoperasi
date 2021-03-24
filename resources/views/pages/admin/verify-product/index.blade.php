@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title_page')
-  Data Umkm
+  Verifikasi Produk
 @endsection
 
 @section('styles_page')
@@ -18,19 +18,19 @@
         <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">User Umkm</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Verifikasi Produk</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <button type="button" data-url = "{{ url('admin/user-umkm/create') }}" data-size="md" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
                 <br><br>
                 <table class="table table-bordered table-hover" id="myTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th width="50px">No</th>
-                      <th >Nama</th>
-                      <th >Username</th>
-                      <th >Nama Toko</th>
+                      <th>Gambar</th>
+                      <th>Nama Toko</th>
+                      <th>Nama Produk</th>
+                      <th>Harga</th>
                       <th width="150px">Action</th>
                     </tr>
                   </thead>
@@ -66,25 +66,24 @@
        var table   =  $('#myTable').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url("admin/user-umkm") }}',
+                            ajax: '{{ url("admin/verify-product") }}',
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },
+                                { data: 'show_image' },
+                                {data: 'umkm.store_name'},
                                 { data: 'name' },
-                                { data: 'username' },
-                                { data: 'umkm.store_name' },
+                                { data: 'show_umkm_price' },
                                 {data : 'action',orderable: false, searchable: false}
                             ]
                         });
     });
 
     $(".modal_add").click(showForm);
-    $('body').on("click",".btn_edit", showForm);
-
+    $('body').on("click",".show_from", showForm);
     $('body').on("click",".btn_delete", deleteForm );
 
     $('#modals').on("submit",".forms",saveForm);
-    $('#modals').on("submit",".edit-form",saveForm);
 
 
 </script>

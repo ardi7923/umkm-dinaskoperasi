@@ -44,6 +44,18 @@
           <span>User Umkm</span></a>
       </li>
 
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/verify-product') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Verifikasi Produk</span></a>
+      </li>
+
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/data-product') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Data Produk</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
