@@ -7,8 +7,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@shophub.com</li>
+								<li><i class="ti-headphone-alt"></i> (0411) 853991</li>
+								<li><i class="ti-email"></i> support@umkmsulsel.com</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->

@@ -32,7 +32,7 @@
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/bank') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-credit-card"></i>
           <span>Bank</span></a>
       </li>
 
@@ -44,13 +44,13 @@
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-umkm') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-check"></i>
           <span>Verifikasi Umkm</span></a>
       </li>
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/data-umkm') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-store"></i>
           <span>Data Umkm</span></a>
       </li>
 
@@ -68,13 +68,13 @@
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-product') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-check"></i>
           <span>Verifikasi Produk</span></a>
       </li>
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/data-product') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-archive"></i>
           <span>Data Produk</span></a>
       </li>
 

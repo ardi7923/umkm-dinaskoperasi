@@ -22,13 +22,13 @@
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('umkm/product-submission') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-check"></i>
           <span>Pengajuan Product</span></a>
       </li>
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('umkm/product') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-archive"></i>
           <span>Product</span></a>
       </li>
 
