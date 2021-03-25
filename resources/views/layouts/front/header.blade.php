@@ -17,10 +17,31 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-						<!-- 		<li><i class="ti-location-pin"></i> Store location</li>
-								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> -->
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a></li>
+							  @if(!Auth::check())
+								<li>
+									<i class="ti-user"></i> <a href="{{ url('register') }}">Register</a>
+								</li>
+								<li>
+									<i class="ti-power-off"></i><a href="{{ url('login') }}">Login</a>
+								</li>
+							  @elseif(Auth::check() && Auth::user()->role == 'CUSTOMER')
+							  	<li>
+									<i class="ti-user"></i> <a href="#">{{ Auth::user()->name }}</a>
+								</li>
+								<li>
+									<i class="ti-power-off"></i>
+									<a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+								</li>
+
+							  @else
+							  	<li>
+									<i class="ti-user"></i> <a href="{{ url('login') }}">{{ Auth::user()->name }}</a>
+								</li>
+							  								 
+							  @endif
+
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -79,6 +100,7 @@
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div> -->
+							@if(Auth::check() && Auth::user()->role == 'CUSTOMER')
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 								<!-- Shopping Item -->
@@ -111,6 +133,7 @@
 								</div>
 								<!--/ End Shopping Item -->
 							</div>
+							@endif
 						</div>
 					</div>
 				</div>

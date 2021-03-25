@@ -18,6 +18,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/', 'Front\HomeController@index');
 
+Route::get('register', 'Front\RegisterController@index');
+
 Route::get('umkm', 'Front\UmkmController@index');
 
 Route::get('registration-umkm', 'Front\RegistrationUmkmController@index');
