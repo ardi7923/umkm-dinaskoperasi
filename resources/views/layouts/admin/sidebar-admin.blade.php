@@ -20,11 +20,27 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <div class="sidebar-heading">
+        Data Master
+      </div>
+
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/category') }}">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-list"></i>
           <span>Kategori</span></a>
       </li>
+
+      <li class="nav-item" id="organization-committee" style="margin-top: -20px">
+        <a class="nav-link" href="{{ url('admin/bank') }}">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Bank</span></a>
+      </li>
+
+       <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        UMKM
+      </div>
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-umkm') }}">
@@ -32,17 +48,23 @@
           <span>Verifikasi Umkm</span></a>
       </li>
 
-      <li class="nav-item" id="organization-committee">
+      <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/data-umkm') }}">
           <i class="fas fa-fw fa-users"></i>
           <span>Data Umkm</span></a>
       </li>
 
-      <li class="nav-item" id="organization-committee">
+      <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/user-umkm') }}">
           <i class="fas fa-fw fa-users"></i>
           <span>User Umkm</span></a>
       </li>
+
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-heading">
+        Produk
+      </div>
 
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-product') }}">
@@ -50,17 +72,13 @@
           <span>Verifikasi Produk</span></a>
       </li>
 
-      <li class="nav-item" id="organization-committee">
+      <li class="nav-item" id="organization-committee" style="margin-top: -20px">
         <a class="nav-link" href="{{ url('admin/data-product') }}">
           <i class="fas fa-fw fa-users"></i>
           <span>Data Produk</span></a>
       </li>
 
-      <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('admin/bank') }}">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Bank</span></a>
-      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
