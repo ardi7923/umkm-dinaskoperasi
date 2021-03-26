@@ -6,7 +6,7 @@
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
-													<li><a href="#">Produk</a></li>												
+													<li><a href="{{ url('product') }}">Produk</a></li>												
 													<li class="{{ Request::is('umkm') ? 'active' : '' }}"><a href="{{ url('umkm') }}">Umkm</a></li>
 											<!-- 		<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
@@ -20,7 +20,7 @@
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 														</ul>
 													</li> -->
-													<li><a href="contact.html">Kontak Kami</a></li>
+													<!-- <li><a href="contact.html">Kontak Kami</a></li> -->
 												</ul>
 										</div>
 									</div>
