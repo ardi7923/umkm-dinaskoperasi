@@ -19,6 +19,8 @@ require __DIR__.'/auth.php';
 Route::get('/', 'Front\HomeController@index');
 
 Route::get('register', 'Front\RegisterController@index');
+Route::post('register', 'Front\RegisterController@store');
+Route::get('register/success', 'Front\RegisterController@success');
 
 Route::get('umkm', 'Front\UmkmController@index');
 

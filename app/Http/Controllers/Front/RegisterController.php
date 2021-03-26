@@ -5,6 +5,10 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\District;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use App\Models\Customer;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -36,9 +40,31 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        //
+        try {
+
+          DB::transaction(function () use ($request)   {
+           $customer =  Customer::create([
+                            'district_id' => $request->district_id,
+                            'phone'       => $request->phone,
+                            'address'     => $request->address,
+
+                        ]);
+           User::create([
+                            'name'        => $request->name,
+                            'username'    => $request->username,
+                            'role'        => 'CUSTOMER',
+                            'password'    => bcrypt($request->password),
+                            'customer_id' => $customer->id
+                        ]);
+          });
+
+          return redirect('register/success');
+
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -47,9 +73,10 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function success()
     {
-        //
+        return view('pages.front.register.success');
     }
 
     /**

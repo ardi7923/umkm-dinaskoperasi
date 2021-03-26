@@ -37,29 +37,29 @@
 									<h4>Belanja Aman dan membantu umkm dalam negeri</h4>
 									<h3>Daftar Pengguna</h3>
 								</div>
-								<form class="form" method="post" action="{{ url('register') }}" enctype="multipart/form-data">
+								<form class="form"  action="{{ url('register') }}" method="POST">
 									@csrf
 									<div class="row">
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Nama<span>*</span></label>
-												<input name="name" type="text" placeholder="" required>
+												<input name="name" type="text" placeholder=""  value="{{ old('name') }}" required>
 											</div>
 										</div>
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Nomor Telepon<span>*</span></label>
-												<input name="phone" type="text" placeholder="" required>
+												<input name="phone" type="text" placeholder="" value="{{ old('phone') }}" required>
 											</div>
 										</div>
 
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Kabupaten<span>*</span></label><br>
-												<select name="" class="form-control" required style="width: 500px">
+												<select name="district_id" class="district_id"  required >
 													<option value="" disabled selected>--PILIH--</option>
 													@foreach( $districts as $d )
-														<option value=""> {{ $d->name }} </option>
+														<option value="{{ $d->id }}"> {{ $d->name }} </option>
 														
 													@endforeach
 												</select>
@@ -68,13 +68,47 @@
 
 
 
+
 										<div class="col-12">
 											<div class="form-group message">
 												<label>Alamat<span>*</span></label>
-												<textarea name="address" placeholder="" required></textarea>
+												<textarea name="address" placeholder="" required>
+													{{ old('address') }}
+												</textarea>
 											</div>
 										</div>
-										
+
+										<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Username<span>*</span></label>
+												<input name="username" type="text" placeholder=""  value="{{ old('username') }}" required>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Password<span>*</span></label>
+												<input name="password" type="password" placeholder="" required>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Konfirmasi Password<span>*</span></label>
+												<input name="confirm_password" type="password" placeholder="" required>
+											</div>
+										</div>
+
+										@if ($errors->any())
+										    <div class="alert alert-danger">
+										        <ul>
+										            @foreach ($errors->all() as $error)
+										                <li>{{ $error }}</li>
+										            @endforeach
+										        </ul>
+										    </div>
+										@endif
+
 										<div class="col-12">
 											<div class="form-group button">
 												<button type="submit" class="btn ">Daftar</button>
@@ -101,6 +135,7 @@
 
 @section('js')
 <script>
+$('.district_id').val('{{ old("district_id") }}');
   $('.datepicker').datepicker({
       format: 'yyyy/mm/dd',
       startView : 2,

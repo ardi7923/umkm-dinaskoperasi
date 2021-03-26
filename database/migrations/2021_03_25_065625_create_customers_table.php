@@ -16,7 +16,6 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->string('name');
             $table->bigInteger('district_id')->unsigned();
             $table->string('phone');
             $table->string('address');
