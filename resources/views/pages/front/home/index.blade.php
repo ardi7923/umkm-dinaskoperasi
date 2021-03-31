@@ -60,7 +60,7 @@
 					<div class="tab-content" id="myTabContent">
 						@foreach( $categories as $i => $c )
 						<!-- Start Single Tab -->
-						<div class="tab-pane fade show active" id="{{ $c->id }}" role="tabpanel">
+						<div class="tab-pane fade show {{ ($i == 0) ? 'active' : '' }}" id="{{ $c->id }}" role="tabpanel">
 							<div class="tab-single">
 								<div class="row">
 									@foreach( $c->product()->limit(8)->get() as $p )
