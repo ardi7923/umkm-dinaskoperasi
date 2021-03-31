@@ -36,7 +36,8 @@ Route::resource('checkout', 'Front\CheckoutController');
 Route::post('checkout-process', 'Front\CheckoutController@proccesssuccess');
 Route::get('checkout-success', 'Front\CheckoutController@success');
 
-Route::get('user-order', 'Front\UserOrderController@index');
+Route::resource('user-order', 'Front\UserOrderController');
+Route::get('user-order-success', 'Front\UserOrderController@success');
 
 Route::group(['middleware' => 'auth'], function () { 
 

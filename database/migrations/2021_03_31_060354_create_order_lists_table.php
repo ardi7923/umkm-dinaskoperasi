@@ -16,23 +16,23 @@ class CreateOrderListsTable extends Migration
         Schema::create('order_lists', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            
             $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
             $table->string('name');
             $table->text('description');
-            $table->string('price');
+            $table->double('price');
             $table->string('image');
             $table->string('ammount');
+            $table->double('total_price');
             
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('order_id')->references('id')->on('orders')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            
-
-            $table->foreign('order_id')->references('id')->on('orders')
+            $table->foreign('product_id')->references('id')->on('products')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

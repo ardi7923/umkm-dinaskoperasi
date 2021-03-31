@@ -102,7 +102,7 @@
 							</div> -->
 							@if(Auth::check() && Auth::user()->role == 'CUSTOMER')
 							<div class="sinlge-bar shopping">
-								<a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ Auth::user()->carts->count() }}</span></a>
+								<a href="{{ url('cart') }}" class="single-icon"><i class="ti-shopping-cart"></i> <span class="total-count">{{ Auth::user()->carts->count() }}</span></a>
 								<!-- Shopping Item -->
 								
 								<div class="shopping-item">

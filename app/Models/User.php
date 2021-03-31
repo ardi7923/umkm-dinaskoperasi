@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Umkm;
 use App\Models\UserCart;
 use App\Models\Product;
-use App\Models\Sale;
+use App\Models\Order;
 use App\Models\Customer;
 use App\Models\District;
 
@@ -55,9 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(UserCart::class);
     }
 
-    public function sales()
+    public function orders()
     {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(Order::class);
     }
 
     public function customer()

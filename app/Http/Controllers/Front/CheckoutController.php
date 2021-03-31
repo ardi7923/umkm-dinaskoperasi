@@ -74,18 +74,20 @@ class CheckoutController extends Controller
                 $order =   Order::create([ 
                                           'date'    => now(), 
                                           'sts'     => 0, 
-                                          'bank_id' => $request->bank_id
+                                          'bank_id' => $request->bank_id,
+                                          'user_id' => Auth::user()->id,
                                       ]);
                 foreach ($carts as $key => $c) {
 
-                   OrderList::create([
-                        'user_id'     => Auth::user()->id,
+                   OrderList::create([ 
                         'order_id'    => $order->id,
+                        'product_id'  => $c->product->id,
                         'name'        => $c->product->name,
                         'description' => $c->product->description,
                         'price'       => $c->product->price,
                         'image'       => $c->product->image,
                         'ammount'     => $c->qty,
+                        'total_price' => $c->product->price * $c->qty
                         
 
                    ]);

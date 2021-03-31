@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Order;
+use MainService;
+use Image;
 
 class UserOrderController extends Controller
 {
@@ -26,7 +29,7 @@ class UserOrderController extends Controller
      */
     public function create()
     {
-        //
+        // return MainService::renderToJson('pages.front.user-order.create');
     }
 
     /**
@@ -37,7 +40,21 @@ class UserOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+
+            $file     = $request->image_transaction;
+            $namaFile = 'uploads/images/image_transaction/'.time().'.'.$file->extension();
+            Image::make($file)->resize(547,547)->encode('data-url')->save($namaFile);
+
+            Order::find($request->id)->update([
+                'image_transaction' => $namaFile,
+                'sts'               => 1
+            ]);
+
+            return redirect('user-order-success');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -48,7 +65,9 @@ class UserOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::with('lists')->find($id);
+      
+        return view('pages.front.user-order.show',compact('order','id'));
     }
 
     /**
@@ -57,9 +76,9 @@ class UserOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function success()
     {
-        //
+        return view('pages.front.user-order.success');
     }
 
     /**

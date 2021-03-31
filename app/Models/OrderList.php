@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderList;
 
 class OrderList extends Model
 {
@@ -16,4 +17,5 @@ class OrderList extends Model
      */
     protected $guarded = [
     ];
+
 }
