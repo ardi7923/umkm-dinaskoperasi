@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\front;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\District;
-use App\Http\Requests\RegisterRequest;
-use App\Models\User;
-use App\Models\Customer;
-use DB;
 use Auth;
 
-class RegisterController extends Controller
+class UserOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +15,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $districts = District::all();
 
-        return view('pages.front.register.index',compact('districts'));
+        return view('pages.front.user-order.index');
     }
 
     /**
@@ -41,33 +35,9 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function store(Request $request)
     {
-        try {
-
-          DB::transaction(function () use ($request)   {
-            $user = User::create([
-                            'name'        => $request->name,
-                            'username'    => $request->username,
-                            'role'        => 'CUSTOMER',
-                            'password'    => bcrypt($request->password),     
-                        ]);
-
-           Customer::create([
-                            'district_id' => $request->district_id,
-                            'phone'       => $request->phone,
-                            'address'     => $request->address,
-                            'user_id'     => $user->id
-
-                        ]);
-           
-          });
-
-          return redirect('register/success');
-
-        } catch (\Exception $e) {
-            dd($e);
-        }
+        //
     }
 
     /**
@@ -76,10 +46,9 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function success()
+    public function show($id)
     {
-        return view('pages.front.register.success');
+        //
     }
 
     /**

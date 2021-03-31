@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Umkm;
+use App\Models\UserCart;
+use App\Models\Product;
+use App\Models\Sale;
+use App\Models\Customer;
+use App\Models\District;
 
 class User extends Authenticatable
 {
@@ -45,8 +50,39 @@ class User extends Authenticatable
         return $this->belongsTo(Umkm::class);
     }
 
+    public function carts()
+    {
+        return $this->hasMany(UserCart::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->using(UserCart::class);
+    }
+
     public function scopeIsUmkm($query)
     {
         return $query->where('role','UMKM');
     }
+
+    public function getDistrictNameAttribute()
+    {
+        return ($this->district->name);
+    }
+
+    // public function scopeIsUmkm($query)
+    // {
+    //     return $query->where('role','UMKM');
+    // }
 }

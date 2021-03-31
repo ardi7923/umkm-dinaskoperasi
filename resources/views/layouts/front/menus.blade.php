@@ -17,7 +17,7 @@
 													<li class="{{ Request::is('registration-umkm') ? 'active' : '' }}"><a href="{{ url('registration-umkm') }}">Daftar Mitra</a></li>
 
 													@if( Auth::check() && Auth::user()->role == 'CUSTOMER' )
-														<li class="{{ Request::is('registration-umkm') ? 'active' : '' }}"><a href="{{ url('registration-umkm') }}">Data Pemesanan</a></li>
+														<li class="{{ Request::is('user-order') ? 'active' : '' }}"><a href="{{ url('user-order') }}">Data Pemesanan</a></li>
 													@endif									
 													<!-- <li><a href="#">Blog<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">

@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\front;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\District;
-use App\Http\Requests\RegisterRequest;
-use App\Models\User;
-use App\Models\Customer;
-use DB;
 use Auth;
+use App\Models\UserCart;
 
-class RegisterController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +16,9 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $districts = District::all();
-
-        return view('pages.front.register.index',compact('districts'));
+        $carts = Auth::user()->carts;
+        
+        return view('pages.front.cart.index',compact('carts'));
     }
 
     /**
@@ -41,33 +37,9 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function store(Request $request)
     {
-        try {
-
-          DB::transaction(function () use ($request)   {
-            $user = User::create([
-                            'name'        => $request->name,
-                            'username'    => $request->username,
-                            'role'        => 'CUSTOMER',
-                            'password'    => bcrypt($request->password),     
-                        ]);
-
-           Customer::create([
-                            'district_id' => $request->district_id,
-                            'phone'       => $request->phone,
-                            'address'     => $request->address,
-                            'user_id'     => $user->id
-
-                        ]);
-           
-          });
-
-          return redirect('register/success');
-
-        } catch (\Exception $e) {
-            dd($e);
-        }
+        //
     }
 
     /**
@@ -76,10 +48,23 @@ class RegisterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function success()
+    public function show($id)
     {
-        return view('pages.front.register.success');
+        if(!Auth::check()){
+            return view('pages.front.cart.error-login');
+        }elseif(Auth::check() && Auth::user()->carts()->where('product_id',$id)->count() > 0){
+            return redirect('cart');
+        }else{
+            try {
+                UserCart::create([
+                    'user_id'    => Auth::user()->id,
+                    'product_id' => $id
+                ]);
+                return redirect('cart');
+            } catch (\Exception $e) {
+                dd($e);
+            }
+        }
     }
 
     /**
@@ -113,6 +98,12 @@ class RegisterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            UserCart::find($id)->delete();
+
+            return back();
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

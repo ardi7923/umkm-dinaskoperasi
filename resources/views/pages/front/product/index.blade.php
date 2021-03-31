@@ -26,30 +26,30 @@
 		</div>
 		<div class="row">
 			@forelse( $products as $i => $p )
-			@if($i > 2)
-				<section class="shop-home-list section" style="margin-right: 20px; margin-top: -100px"  >
-			@else
-				<section class="shop-home-list section" style="margin-right: 20px;"  >
-			@endif
-			
-			<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="{{ $p->image }}" style="width: 114px; height: 140px" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+			<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+				<div class="single-product">
+					<div class="product-img">
+						<a href="product-details.html">
+							<img class="default-img" src="{{ $p->image }}" alt="#">
+							<img class="hover-img" src="{{ $p->image }}" alt="#">
+						</a>
+						<div class="button-head">
+							<div class="product-action">
+								
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h4 class="title"><a href="#">{{ $p->name }}</a></h4>
-								<h4 class="title"><a href="#">35 Terjual</a></h4>
-								<p class="price with-discount">Rp {{ number_format( $p->price,0,',','.' ) }}</p>
+							<div class="product-action-2">
+								<a title="Tambahkan ke keranjang" href="{{ url('cart/'.$p->id) }}">Tambahkan ke keranjang</a>
 							</div>
 						</div>
 					</div>
+					<div class="product-content">
+						<h3><a href="product-details.html">{{ $p->name }}</a></h3>
+						<div class="product-price">
+							<span>Rp {{ number_format($p->price,0,',','.') }}</span>
+						</div>
+					</div>
 				</div>
-			</section>
+			</div>
 			@empty
 			<div class="col-xl-12 col-lg-4 col-md-4 col-12">	<!-- End Breadcrumbs -->
 			<center>

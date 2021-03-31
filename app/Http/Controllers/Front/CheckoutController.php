@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Http\Controllers\Front;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\UserCart;
+use App\Models\Bank;
+use Auth;
+use App\Models\Order;
+use App\Models\OrderList;
+use DB;
+
+class CheckoutController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $banks = Bank::all();
+        return view('pages.front.checkout.index',compact('banks'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function success()
+    {
+        return view('pages.front.checkout.success');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $datas =  count($request->id);
+            for ($i=0; $i < $datas; $i++) { 
+                UserCart::find($request->id[$i])->update([
+                    'qty' => $request->qty[$i]
+                ]);
+            }
+
+            return redirect('checkout');
+        } catch (\Exception $e) {
+            dd($e);   
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function proccesssuccess(Request $request)
+    {
+       try {
+
+            $carts = Auth::user()->carts()->get();
+
+            DB::transaction(function () use ($request,$carts)   {
+              
+                $order =   Order::create([ 
+                                          'date'    => now(), 
+                                          'sts'     => 0, 
+                                          'bank_id' => $request->bank_id
+                                      ]);
+                foreach ($carts as $key => $c) {
+
+                   OrderList::create([
+                        'user_id'     => Auth::user()->id,
+                        'order_id'    => $order->id,
+                        'name'        => $c->product->name,
+                        'description' => $c->product->description,
+                        'price'       => $c->product->price,
+                        'image'       => $c->product->image,
+                        'ammount'     => $c->qty,
+                        
+
+                   ]);
+                }
+                
+                Auth::user()->carts()->delete();
+                
+                 
+            });
+
+              
+            return redirect('checkout-success');
+        
+       } catch (\Exception $e) {
+           dd($e);
+       }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

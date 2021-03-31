@@ -102,35 +102,42 @@
 							</div> -->
 							@if(Auth::check() && Auth::user()->role == 'CUSTOMER')
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="{{ url('cart') }}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ Auth::user()->carts->count() }}</span></a>
 								<!-- Shopping Item -->
+								
 								<div class="shopping-item">
+									@if(count(Auth::user()->carts) > 0)
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
+										<span>{{ Auth::user()->carts->count() }} Items</span>
+										<a href="{{ url('cart') }}">Lihat Keranjang</a>
 									</div>
+
 									<ul class="shopping-list">
+									  @foreach( Auth::user()->carts as $c )
 										<li>
 											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
+											<a class="cart-img" href="#"><img src="{{ $c->product->image }}" style="width: 70px; height: 70px" alt="#"></a>
+											<h4><a href="#">{{ $c->product->name }}</a></h4>
+											<p class="quantity">1x - <span class="amount">{{ rupiah_format($c->product->price ) }}</span></p>
 										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+										@endforeach
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span class="total-amount">Rp {{ rupiah_format(Auth::user()->products()->sum('price')) }}</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										
+											<a href="checkout.html" class="btn animate">Checkout</a>
+										
 									</div>
+									@else
+										<div class="dropdown-cart-header">
+										 <center> <strong> Belum Ada Pesanan </strong> </center>
+										</div>
+									@endif
 								</div>
+								
 								<!--/ End Shopping Item -->
 							</div>
 							@endif

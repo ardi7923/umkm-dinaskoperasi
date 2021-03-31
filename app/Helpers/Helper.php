@@ -108,13 +108,11 @@ if (!function_exists('percen')) {
     }
 }
 
+if (!function_exists('get_categories')) {
 
-
-if(!function_exists('get_categories')){
-
-  function get_categories()
-  {
-    return DB::table('categories')->limit(10)->get();
-  }
+    function get_categories()
+    {
+      return DB::table('categories')->get();
+    }
 }
 

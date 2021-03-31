@@ -30,7 +30,17 @@ Route::get('registration-umkm', 'Front\RegistrationUmkmController@index');
 Route::post('registration-umkm', 'Front\RegistrationUmkmController@store');
 Route::get('registration-umkm/success', 'Front\RegistrationUmkmController@success');
 
+
+Route::resource('cart','Front\CartController');
+Route::resource('checkout', 'Front\CheckoutController');
+Route::post('checkout-process', 'Front\CheckoutController@proccesssuccess');
+Route::get('checkout-success', 'Front\CheckoutController@success');
+
+Route::get('user-order', 'Front\UserOrderController@index');
+
 Route::group(['middleware' => 'auth'], function () { 
+
+	
 
 	Route::get('dashboard','Admin\DashboardController@index');
 
