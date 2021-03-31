@@ -110,20 +110,32 @@
 									<ul class="shopping-list">
 									  @foreach( Auth::user()->carts as $c )
 										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="{{ $c->product->image }}" style="width: 70px; height: 70px" alt="#"></a>
-											<h4><a href="#">{{ $c->product->name }}</a></h4>
-											<p class="quantity">1x - <span class="amount">{{ rupiah_format($c->product->price ) }}</span></p>
+
+
+											<a class="cart-img" href="#">
+												<img src="{{ $c->product->image }}" style="width: 70px; height: 70px" alt="#">
+											</a>
+
+											<h4>
+												<a href="#">{{ $c->product->name }}</a>
+											</h4>
+
+											<p class="quantity">
+												{{ $c->qty  }} x - 
+												<span class="amount"> 
+													{{  rupiah_format( $c->product->price  ) }}
+												</span>
+											</p>
 										</li>
 										@endforeach
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
-											<span class="total-amount">Rp {{ rupiah_format(Auth::user()->products()->sum('price')) }}</span>
+											<span class="total-amount">Rp {{ rupiah_format(Auth::user()->carts->sum('total'))  }}</span>
 										</div>
 										
-											<a href="checkout.html" class="btn animate">Checkout</a>
+											<a href="{{ url('checkout') }}" class="btn animate">Checkout</a>
 										
 									</div>
 									@else

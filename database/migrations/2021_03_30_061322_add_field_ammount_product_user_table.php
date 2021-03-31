@@ -14,7 +14,7 @@ class AddFieldAmmountProductUserTable extends Migration
     public function up()
     {
         Schema::table('product_user',function(Blueprint $table){
-            $table->double('qty')->nullable()->after('product_id');
+            $table->double('qty')->default(1)->after('product_id');
         });
     }
 
