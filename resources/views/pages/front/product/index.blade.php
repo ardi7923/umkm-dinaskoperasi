@@ -44,6 +44,7 @@
 					</div>
 					<div class="product-content">
 						<h3><a href="product-details.html">{{ $p->name }}</a></h3>
+						<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists->count() }} Terjual </span>
 						<div class="product-price">
 							<span>Rp {{ number_format($p->price,0,',','.') }}</span>
 						</div>

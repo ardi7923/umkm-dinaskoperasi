@@ -63,7 +63,7 @@
 						<div class="tab-pane fade show active" id="{{ $c->id }}" role="tabpanel">
 							<div class="tab-single">
 								<div class="row">
-									@foreach( $c->product as $p )
+									@foreach( $c->product()->limit(8)->get() as $p )
 									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 										<div class="single-product">
 											<div class="product-img">
@@ -76,12 +76,13 @@
 														
 													</div>
 													<div class="product-action-2">
-														<a title="Tambahkan ke keranjang" href="#">Tambahkan ke keranjang</a>
+														<a title="Tambahkan ke keranjang" href="{{ url('cart/'.$p->id) }}">Tambahkan ke keranjang</a>
 													</div>
 												</div>
 											</div>
 											<div class="product-content">
 												<h3><a href="product-details.html">{{ $p->name }}</a></h3>
+												<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists->count() }} Terjual </span>
 												<div class="product-price">
 													<span>Rp {{ number_format($p->price,0,',','.') }}</span>
 												</div>
