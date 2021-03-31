@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
+use MainService;
 
 class ProductController extends Controller
 {
@@ -27,5 +28,12 @@ class ProductController extends Controller
     	
 
     	return view('pages.front.product.index',compact('products','q'));
+    }
+
+
+    public function show($id)
+    {
+        $data = Product::find($id);
+        return MainService::renderToJson('pages.front.product.show',compact('data'));
     }
 }

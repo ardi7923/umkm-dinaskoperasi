@@ -32,7 +32,7 @@
 			<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 				<div class="single-product">
 					<div class="product-img">
-						<a href="product-details.html">
+						<a class="product-detail" data-url="{{ url('product/'.$p->id) }}">
 							<img class="default-img" src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
 							<img class="hover-img" src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
 						</a>
@@ -70,4 +70,18 @@
 
 		</div>
 	</div>
+
+	@include('components.modal')
+@endsection
+
+@section('scripts_page')
+	<script src="{{ asset('js/main.js') }}"></script>
+@endsection
+
+
+@section('js')
+	<script>
+		$('body').on("click",".product-detail", showForm);
+
+	</script>
 @endsection

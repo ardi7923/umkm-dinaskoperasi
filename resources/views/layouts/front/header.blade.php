@@ -64,8 +64,8 @@
 							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
+								<form class="search-form" action="{{ url('product') }}" method="get">
+									<input type="text" placeholder="Cari Produk Disini....." name="q">
 									<button value="search" type="submit"><i class="ti-search"></i></button>
 								</form>
 							</div>
