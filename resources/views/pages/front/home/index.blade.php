@@ -68,8 +68,8 @@
 										<div class="single-product">
 											<div class="product-img">
 												<a href="product-details.html">
-													<img class="default-img" src="{{ $p->image }}" alt="#">
-													<img class="hover-img" src="{{ $p->image }}" alt="#">
+													<img class="default-img" src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
+													<img class="hover-img"  src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
 												</a>
 												<div class="button-head">
 													<div class="product-action">
