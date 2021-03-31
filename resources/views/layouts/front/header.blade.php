@@ -77,15 +77,10 @@
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select>
-									<option selected="selected">Semua</option>
-									@foreach(get_categories() as $c)
-										<option value=""> {{ $c->name }} </option>
-										
-									@endforeach
-								</select>
-								<form>
-									<input name="search" placeholder="Cari Produk Disini....." type="search">
+
+							
+								<form action="{{ url('product') }}" method="get">
+									<input name="q" placeholder="Cari Produk Disini....." type="search" >
 									<button class="btnn"><i class="ti-search"></i></button>
 								</form>
 							</div>
@@ -157,7 +152,7 @@
 								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
 								<ul class="main-category">
 									@foreach(get_categories() as $c)
-									<li><a href="#">{{ $c->name }}</a></li>
+									<li><a href="{{ url('product?q='.$c->name) }}">{{ $c->name }}</a></li>
 									@endforeach
 								</ul>
 							</div>

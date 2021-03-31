@@ -21,6 +21,9 @@
 			<div class="col-12">
 				<div class="section-title">
 					<h2>PRODUK</h2>
+					@if($q)
+						<p> Hasil Pencarian <strong> "{{ $q }}" </strong>
+					@endif
 				</div>
 			</div>
 		</div>

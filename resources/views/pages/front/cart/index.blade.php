@@ -18,7 +18,7 @@
 	</div>
 	<div class="container" style="margin-top: 20px; margin-bottom: 100px">
 
-		<div class="row">
+
 			@if(count( $carts) > 0)
 	
 
@@ -150,7 +150,7 @@
 			
 
 		</div>
-	</div>
+
 @endsection
 @section('scripts_page')
 	<script src=" {{ asset('js/main.js') }}"></script>

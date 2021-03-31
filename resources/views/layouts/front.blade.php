@@ -42,6 +42,11 @@
  
 @include('layouts.front.scripts')
 @yield('scripts_page')
+<script>
+	$('#search-category').change(function(){
+		$('#input-search-category').val($(this).val());
+	});
+</script>
 @yield('js')
 </body>
 </html>
