@@ -118,60 +118,28 @@
 						</div>
 					</div>
 				</div>
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+				@foreach($on_sales as $os)
+					<!-- Start Single List  -->
+					<div class="single-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="list-image overlay">
+									<img src="{{ asset($os->image) }}" style="width:115px;height:140px;
+										" alt="#">
+									<a href="{{ url('cart/'.$os->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h4 class="title"><a href="#">Licity jelly leg flat Sandals</a></h4>
-								<p class="price with-discount">$59</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$44</p>
+							<div class="col-lg-6 col-md-6 col-12 no-padding">
+								<div class="content">
+									<h5 class="title"><a href="#">{{ $os->name }}</a></h5>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $os->orderlists->count() }} Terjual </span> <br>
+									<p class="price with-discount">{{ rupiah_format($os->price) }}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$89</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
+					<!-- End Single List  -->
+				@endforeach
 			</div>
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="row">
@@ -181,123 +149,60 @@
 						</div>
 					</div>
 				</div>
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+				@foreach($best_sellers as $bs)
+					<!-- Start Single List  -->
+					<div class="single-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="list-image overlay">
+									<img src="{{ asset($bs->image) }}" style="width:115px;height:140px;
+										!important" alt="#">
+									<a href="{{ url('cart/'.$bs->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$65</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$33</p>
+							<div class="col-lg-6 col-md-6 col-12 no-padding">
+								<div class="content">
+									<h5 class="title"><a href="#">{{ $bs->name }}</a></h5>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $bs->orderlists->count() }} Terjual </span> <br>
+									<p class="price with-discount">{{ rupiah_format($bs->price) }}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$77</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
+					<!-- End Single List  -->
+				@endforeach
+
 			</div>
 			<div class="col-lg-4 col-md-6 col-12">
 				<div class="row">
 					<div class="col-12">
 						<div class="shop-section-title">
-							<h1>Top viewed</h1>
+							<h1>Recomended</h1>
 						</div>
 					</div>
 				</div>
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+				@foreach($recomendeds as $r)
+					<!-- Start Single List  -->
+					<div class="single-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="list-image overlay">
+									<img src="{{ asset($r->image) }}" style="width:115px;height:140px;
+										!important" alt="#">
+									<a href="{{ url('cart/'.$r->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$22</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$35</p>
+							<div class="col-lg-6 col-md-6 col-12 no-padding">
+								<div class="content">
+									<h5 class="title"><a href="#">{{ $r->name }}</a></h5>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $r->orderlists->count() }} Terjual </span> <br>
+									<p class="price with-discount">{{ rupiah_format($r->price) }}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- End Single List  -->
-				<!-- Start Single List  -->
-				<div class="single-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-12">
-							<div class="list-image overlay">
-								<img src="https://via.placeholder.com/115x140" alt="#">
-								<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-12 no-padding">
-							<div class="content">
-								<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-								<p class="price with-discount">$99</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- End Single List  -->
+					<!-- End Single List  -->
+				@endforeach
 			</div>
 		</div>
 	</div>
