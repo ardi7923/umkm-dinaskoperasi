@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderList;
 use App\Models\Bank;
+use App\Models\User;
 
 class Order extends Model
 {
@@ -27,5 +28,15 @@ class Order extends Model
     public function bank()
     {
         return $this->belongsTo(Bank::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function scopeWait($query)
+    {
+        return $query->where('sts',1);
     }
 }

@@ -78,6 +78,16 @@
           <span>Data Produk</span></a>
       </li>
 
+      <div class="sidebar-heading">
+        Pemesanan
+      </div>
+
+      <li class="nav-item" id="organization-committee">
+        <a class="nav-link" href="{{ url('admin/payment-confirm') }}">
+          <i class="fas fa-fw fa-check"></i>
+          <span>Konfirmasi Pembayaran</span></a>
+      </li>
+
 
 
       <!-- Divider -->
