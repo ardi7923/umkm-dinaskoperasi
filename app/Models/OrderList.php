@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\OrderList;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Umkm;
 
 class OrderList extends Model
 {
@@ -18,4 +20,13 @@ class OrderList extends Model
     protected $guarded = [
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

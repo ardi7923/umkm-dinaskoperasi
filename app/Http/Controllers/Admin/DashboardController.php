@@ -8,6 +8,7 @@ use Auth;
 use App\Models\Umkm;
 use App\Models\Product;
 use App\Models\Bank;
+use App\Models\OrderList;
 use App\Models\Order;
 
 class DashboardController extends Controller
@@ -16,7 +17,13 @@ class DashboardController extends Controller
     {
     	if(Auth::user()->role == 'CUSTOMER'){
     		return redirect('/');	
-    	}else{
+    	}else if(Auth::user()->role == 'UMKM'){
+            $products = Product::isUmkm()->count();
+            $orders   = Umkm::with('orderList')->find(Auth::user()->umkm_id);
+            $statistik = $this->statistik();
+
+            return view('pages.admin.dashboard.index-umkm',compact('products','orders','statistik'));
+        }else{
 			$umkms    = Umkm::count();
 			$products = Product::count();
 			$banks    = Bank::count();
@@ -49,6 +56,15 @@ class DashboardController extends Controller
 
     private function queryStatistik($month)
     {
-        return Order::whereMonth('date',$month)->count();
+        if(Auth::user()->role == 'UMKM'){
+            return OrderList::whereHas('product.umkm',function($q){
+                $q->where('id',Auth::user()->umkm_id);
+            })->whereHas('order',function($q) use ($month){
+                $q->whereMonth('date',$month);
+            })->count();
+        }else{
+            return Order::whereMonth('date',$month)->count();
+        }
+        
     }
 }

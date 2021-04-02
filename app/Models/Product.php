@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Umkm;
 use App\Models\OrderList;
+use Auth;
 
 class Product extends Model
 {
@@ -37,6 +38,11 @@ class Product extends Model
     public function scopeVerified($query)
     {
     	return $query->where('verified',1);
+    }
+
+    public function scopeisUmkm($query)
+    {
+        return $query->where('umkm_id',Auth::user()->umkm_id);
     }
 
     public function scopeUnverified($query)

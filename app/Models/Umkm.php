@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderList;
+use App\Models\Product;
 
 class Umkm extends Model
 {
@@ -16,6 +18,10 @@ class Umkm extends Model
     protected $guarded = [
     ];
 
+    public function orderList()
+    {
+        return $this->hasManyThrough(OrderList::class,Product::class);
+    }
 
     public function scopeVerify($query)
     {
