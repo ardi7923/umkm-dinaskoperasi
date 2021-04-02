@@ -223,6 +223,7 @@
 	@endsection
 
 @section('scripts_page')
+	
 	<script src="{{ asset('js/main.js') }}"></script>
 @endsection
 

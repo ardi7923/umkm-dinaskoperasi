@@ -109,8 +109,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="myAreaChart" style="display: block; height: 320px; width: 611px;" width="916" height="480" class="chartjs-render-monitor"></canvas>
+                  <div class="chart-area">
+                      <canvas id="myChart" width="400" height="135"></canvas>
                   </div>
                 </div>
               </div>
@@ -122,4 +122,69 @@
 
 
         </div>
+@endsection
+
+@section('scripts_page')
+  <script src="{{  asset('assets-admin/vendor/chart.js/Chart.min.js')}}"></script>
+@endsection
+
+@section('js')
+<script>
+  var statistiks = [];
+
+  @foreach($statistik as $s)
+    statistiks.push('{{$s}}');
+  @endforeach
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt','Nov', 'Des'],
+        datasets: [{
+            label: 'Data Penjualan',
+            data: statistiks,
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(75, 192, 192, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
 @endsection

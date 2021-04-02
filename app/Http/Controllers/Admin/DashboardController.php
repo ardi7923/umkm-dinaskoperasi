@@ -21,8 +21,34 @@ class DashboardController extends Controller
 			$products = Product::count();
 			$banks    = Bank::count();
 			$orders   = Order::count();
-    		return view('pages.admin.dashboard.index',compact('umkms','products','banks','orders'));
+            $statistik = $this->statistik();
+    		return view('pages.admin.dashboard.index',compact('umkms','products','banks','orders','statistik'));
     	}
     	
+    }
+
+    private function statistik()
+    {
+
+        return [
+                'jan' => $this->queryStatistik(1),
+                'feb' => $this->queryStatistik(2),
+                'mar' => $this->queryStatistik(3),
+                'apr' => $this->queryStatistik(4),
+                'mei' => $this->queryStatistik(5),
+                'jun' => $this->queryStatistik(6),
+                'jul' => $this->queryStatistik(7),
+                'ags' => $this->queryStatistik(8),
+                'sep' => $this->queryStatistik(9),
+                'oct' => $this->queryStatistik(10),
+                'nov' => $this->queryStatistik(11),
+                'des' => $this->queryStatistik(12),
+               ];
+    }
+
+
+    private function queryStatistik($month)
+    {
+        return Order::whereMonth('date',$month)->count();
     }
 }
