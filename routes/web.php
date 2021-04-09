@@ -23,6 +23,8 @@ Route::post('register', 'Front\RegisterController@store');
 Route::get('register/success', 'Front\RegisterController@success');
 
 Route::get('umkm', 'Front\UmkmController@index');
+Route::get('umkm/{id}', 'Front\UmkmController@show');
+
 
 Route::get('product', 'Front\ProductController@index');
 Route::get('product/{id}', 'Front\ProductController@show');

@@ -18,6 +18,11 @@ class Umkm extends Model
     protected $guarded = [
     ];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function orderList()
     {
         return $this->hasManyThrough(OrderList::class,Product::class);
