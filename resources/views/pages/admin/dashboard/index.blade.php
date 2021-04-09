@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('styles_page')
+  <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/alertify.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/themes/bootstrap.min.css')}}">
+@endsection
+
 @section('content')
   <div class="container-fluid">
 
@@ -126,10 +131,17 @@
 
 @section('scripts_page')
   <script src="{{  asset('assets-admin/vendor/chart.js/Chart.min.js')}}"></script>
+  <script src="{{  asset('plugins/alertify/alertify.min.js')}}"></script>
 @endsection
 
 @section('js')
 <script>
+  $(document).ready(function(){
+    @if (Session::get('success'))
+    alertify.notify('Login Berhasil !! <br> Selamat Datang {{ Auth::user()->name }}', 'success', 5, function(){   });
+    @endif
+  });
+  
   var statistiks = [];
 
   @foreach($statistik as $s)

@@ -1,5 +1,10 @@
 @extends('layouts.front')
 
+@section('styles_page')
+  <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/alertify.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/themes/bootstrap.min.css')}}">
+@endsection
+
 
 @section('content')
 <!-- Slider Area -->
@@ -225,11 +230,17 @@
 @section('scripts_page')
 	
 	<script src="{{ asset('js/main.js') }}"></script>
+	<script src="{{  asset('plugins/alertify/alertify.min.js')}}"></script>
 @endsection
 
 
 @section('js')
 	<script>
+		  $(document).ready(function(){
+		    @if (Session::get('success'))
+		    alertify.notify('Login Berhasil !! <br> Selamat Datang {{ Auth::user()->name }}', 'success', 5, function(){   });
+		    @endif
+		  });
 		$('body').on("click",".product-detail", showForm);
 
 	</script>

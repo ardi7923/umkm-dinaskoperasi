@@ -45,6 +45,7 @@ Route::get('user-order-success', 'Front\UserOrderController@success');
 Route::group(['middleware' => 'auth'], function () { 
 
 	
+	Route::get('after-login','Admin\DashboardController@afterLogin');
 
 	Route::get('dashboard','Admin\DashboardController@index');
 

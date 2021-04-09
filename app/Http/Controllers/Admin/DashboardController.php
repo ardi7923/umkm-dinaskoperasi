@@ -15,24 +15,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    	if(Auth::user()->role == 'CUSTOMER'){
-    		return redirect('/');	
-    	}else if(Auth::user()->role == 'UMKM'){
+        if(Auth::user()->role == 'CUSTOMER'){
+            return redirect('/')->with(['success' => 'tes']);   
+        }else if(Auth::user()->role == 'UMKM'){
             $products = Product::isUmkm()->count();
             $orders   = Umkm::with('orderList')->find(Auth::user()->umkm_id);
             $statistik = $this->statistik();
 
             return view('pages.admin.dashboard.index-umkm',compact('products','orders','statistik'));
         }else{
-			$umkms    = Umkm::count();
-			$products = Product::count();
-			$banks    = Bank::count();
-			$orders   = Order::count();
+            $umkms    = Umkm::count();
+            $products = Product::count();
+            $banks    = Bank::count();
+            $orders   = Order::count();
             $statistik = $this->statistik();
-    		return view('pages.admin.dashboard.index',compact('umkms','products','banks','orders','statistik'));
-    	}
-    	
+            return view('pages.admin.dashboard.index',compact('umkms','products','banks','orders','statistik'));
+        }
     }
+
+
 
     private function statistik()
     {
