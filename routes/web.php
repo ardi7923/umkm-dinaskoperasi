@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('payment-confirm','PaymentConfirmController');
 	});
 
-	Route::group(['namespace' => 'Umkm','prefix' => 'umkm'],function(){
+	Route::group(['namespace' => 'Umkm','prefix' => 'admin-umkm'],function(){
 		Route::resource('product-submission','ProductSubmissionController');
 		Route::resource('product','ProductController');
 	});

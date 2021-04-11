@@ -65,7 +65,7 @@
        var table   =  $('#myTable').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url("umkm/product") }}',
+                            ajax: '{{ url("admin-umkm/product") }}',
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },

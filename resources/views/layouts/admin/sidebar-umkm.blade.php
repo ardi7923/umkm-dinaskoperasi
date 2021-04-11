@@ -21,13 +21,13 @@
       <hr class="sidebar-divider">
 
       <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('umkm/product-submission') }}">
+        <a class="nav-link" href="{{ url('admin-umkm/product-submission') }}">
           <i class="fas fa-fw fa-check"></i>
           <span>Pengajuan Product</span></a>
       </li>
 
       <li class="nav-item" id="organization-committee">
-        <a class="nav-link" href="{{ url('umkm/product') }}">
+        <a class="nav-link" href="{{ url('admin-umkm/product') }}">
           <i class="fas fa-fw fa-archive"></i>
           <span>Product</span></a>
       </li>

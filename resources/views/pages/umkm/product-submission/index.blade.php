@@ -22,7 +22,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <button type="button" data-url = "{{ url('umkm/product-submission/create') }}" data-size="lg" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
+                <button type="button" data-url = "{{ url('admin-umkm/product-submission/create') }}" data-size="lg" class="btn btn-primary modal_add"> <i class="fa fa-plus"></i> @lang('main.button.add') </button>
                 <br><br>
                 <table class="table table-bordered table-hover" id="myTable" width="100%" cellspacing="0">
                   <thead>
@@ -67,7 +67,7 @@
        var table   =  $('#myTable').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url("umkm/product-submission") }}',
+                            ajax: '{{ url("admin-umkm/product-submission") }}',
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },

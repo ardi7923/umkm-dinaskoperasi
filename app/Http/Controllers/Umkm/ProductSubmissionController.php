@@ -20,7 +20,7 @@ class ProductSubmissionController extends Controller
             $folder,
             $validator,
             $facade,
-            $url = 'umkm/product-submission/';
+            $url = 'admin-umkm/product-submission/';
 
     public function __construct(Product $model,CrudService $crud_service,ProductSubmissionRequest $validator,ProductSubmissionService $facade)
     {

@@ -1,4 +1,4 @@
-<form class="forms" data-url="{{ url('umkm/product-submission') }}" method="POST" data-reqimage="image">
+<form class="forms" data-url="{{ url('admin-umkm/product-submission') }}" method="POST" data-reqimage="image">
   <div class="modal-header">
     <h4 class="modal-title" id="exampleModalLabel"> @lang('main.form.add')</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -16,7 +16,7 @@ class ProductController extends Controller
         $folder,
         $validator,
         $facade,
-        $url = 'umkm/product/';
+        $url = 'admin-umkm/product/';
 
     public function __construct(Product $model,CrudService $crud_service)
     {
@@ -127,7 +127,7 @@ class ProductController extends Controller
                             return '<button 
                                             class     = "btn btn-circle btn-sm btn-info show_form"
                                             data-size="lg"
-                                            data-url  = '. url("umkm/product/$data->id") .'
+                                            data-url  = '. url("admin-umkm/product/$data->id") .'
                                             data-toggle="tooltip" title="Lihat Data"
                                             > 
                                             <i class  = "fa fa-eye"> </i> 
