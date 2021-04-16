@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('bank','BankController');
 		Route::resource('payment-confirm','PaymentConfirmController');
 		Route::get('statistik/product','StatistikProductController@index');
+		Route::get('statistik/umkm','StatistikUmkmController@index');
 	});
 
 	Route::group(['namespace' => 'Umkm','prefix' => 'admin-umkm'],function(){
