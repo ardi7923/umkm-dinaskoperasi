@@ -25,7 +25,10 @@ class HomeController extends Controller
 			    return $on_sales->orderlists->count();
 		});
 
-		$recomendeds = Product::with('orderlists')->get()->random(3);
+		$recomendeds = Product::with('orderlists')->get();
+		if (!$recomendeds->isEmpty()) {
+			$recomendeds = $recomendeds->random(3);
+		}
 
 
 
