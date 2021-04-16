@@ -68,7 +68,10 @@
 						<div class="tab-pane fade show {{ ($i == 0) ? 'active' : '' }}" id="{{ $c->id }}" role="tabpanel">
 							<div class="tab-single">
 								<div class="row">
-									@foreach( $c->product()->limit(8)->get() as $p )
+									@foreach( $c->product()->limit(8)->get()->sortByDesc(function($best_sellers)
+									{
+											return $best_sellers->orderlists()->sum('ammount');
+									}) as $p )
 									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 										<div class="single-product">
 											<div class="product-img">
@@ -87,7 +90,7 @@
 											</div>
 											<div class="product-content">
 												<h3><a href="#">{{ $p->name }}</a></h3>
-												<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists->count() }} Terjual </span> 
+												<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists->sum('ammount') ?? 0 }} Terjual </span> 
 												<br>
 												<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $c->name }}</span>
 												<div class="product-price">
@@ -139,7 +142,7 @@
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
 									<h5 class="title"><a href="#">{{ $os->name }}</a></h5>
-									<span style="color: #F7941D; font-size: 9pt"> {{ $os->orderlists->count() }} Terjual </span> <br>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $os->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
 									
 									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $os->category->name }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($os->price) }}</p>
@@ -172,7 +175,7 @@
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
 									<h5 class="title"><a href="#">{{ $bs->name }}</a></h5>
-									<span style="color: #F7941D; font-size: 9pt"> {{ $bs->orderlists->count() }} Terjual </span> <br>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $bs->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
 									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $bs->category->name }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($bs->price) }}</p>
 								</div>
@@ -205,7 +208,7 @@
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
 									<h5 class="title"><a href="#">{{ $r->name }}</a></h5>
-									<span style="color: #F7941D; font-size: 9pt"> {{ $r->orderlists->count() }} Terjual </span> <br>
+									<span style="color: #F7941D; font-size: 9pt"> {{ $r->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
 									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $r->category->name }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($r->price) }}</p>
 								</div>
