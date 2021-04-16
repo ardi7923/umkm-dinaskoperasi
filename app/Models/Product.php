@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Umkm;
 use App\Models\OrderList;
+use App\Models\Order;
 use Auth;
 
 class Product extends Model
@@ -33,6 +34,11 @@ class Product extends Model
     public function umkm()
     {
         return $this->belongsTo(Umkm::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class,OrderList::class);
     }
 
     public function scopeVerified($query)
