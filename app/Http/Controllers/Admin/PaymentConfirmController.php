@@ -70,7 +70,8 @@ class PaymentConfirmController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = $this->model->find($id);
+        return MainService::renderToJson($this->folder.'reject',compact('data'));
     }
 
     /**
@@ -111,14 +112,15 @@ class PaymentConfirmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, ResponseService $response)
+    public function destroy($id, ResponseService $response,Request $request)
     {
         try {
             $data = $this->model->find($id);
             File::delete($data->image_transaction);
             $data->update([
-                            'sts'               => 0,
-                            'image_transaction' => null
+                            'sts'               => 3,
+                            'image_transaction' => null,
+                            'statement_reject' => $request->statement_reject
                          ]);
 
             return $response->setCode(200)
@@ -160,16 +162,13 @@ class PaymentConfirmController extends Controller
                                        </button>
 
                                        <button 
-                                                type           ="button"  
-                                                class          ="btn btn-circle btn-sm btn-danger btn-sm mr-1 btn_delete" 
-                                                data-toggle    ="tooltip" 
-                                                data-placement ="top" 
-                                                data-type      = "reload"
-                                                title          =  "Tolak"
-                                                data-url       = '. url("admin/payment-confirm/$data->id") .'
-                                                data-text      = "'. self::delete($data)  .'">
-                                                <i class="fa fa-times"></i>
-                                        </button>
+                                            class     = "btn btn-circle btn-sm btn-danger show_from"
+                                            data-size="lg"
+                                            data-url  = '. url("admin/payment-confirm/$data->id") .'
+                                            data-toggle="tooltip" title="Tolak"
+                                            > 
+                                            <i class  = "fa fa-times"> </i> 
+                                       </button>
 
                                        ';
                             })

@@ -80,7 +80,6 @@
 
     $(".modal_add").click(showForm);
     $('body').on("click",".show_from", showForm);
-    $('body').on("click",".btn_delete", deleteForm );
 
     $('#modals').on("submit",".forms",saveForm);
 

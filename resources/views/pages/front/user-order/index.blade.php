@@ -35,6 +35,7 @@
 										<th class="text-center">TOTAL ITEM</th>
 										<th class="text-center">TOTAL HARGA</th> 
 										<th class="text-center">STATUS</th>
+										<th class="text-center">Alasan Penolakan</th>
 										<th class="text-center">AKSI</th>
 									</tr>
 								</thead>
@@ -52,8 +53,15 @@
 													<span class="badge badge-danger"> Belum Mengirim Bukti </span>
 												@elseif($c->sts == 1)
 													<span class="badge badge-warning"> Menunggu Konfirmasi </span>
+												@elseif($c->sts == 3)
+													<span class="badge badge-danger"> Gagal </span>
 												@else
 													<span class="badge badge-success"> Sukses </span>
+												@endif
+											</td>
+											<td>
+												@if($c->sts == 3) 
+													{{ $c->statement_reject }}
 												@endif
 											</td>
 											<td>
@@ -65,7 +73,14 @@
 												</a>
 												@elseif($c->sts == 1)
 												<!-- 	<span class="badge badge-warning"> tes </span> -->
+												@elseif($c->sts == 3) 
+												<a href="{{ url('user-order/'.$c->id) }}">
+													<button type="" class="btn"> 
+														Kirim Ulang Bukti Pembayaran
+													</button>
+												</a>
 												@else
+												
 												<!-- 	<span class="badge badge-success"> tes </span> -->
 												@endif
 											</td>
