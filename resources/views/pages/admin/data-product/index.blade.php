@@ -28,9 +28,10 @@
                     <tr>
                       <th width="50px">No</th>
                       
+                      <th >Nama Pemilik</th>
                       <th >Nama Toko</th>
                       <th >Kategori</th>
-                      <th >Nama</th>
+                      <th >Nama Produk</th>
                       <th >Harga</th>
                       <th width="150px">Action</th>
                     </tr>
@@ -71,7 +72,7 @@
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },
-                                
+                                { data: 'umkm.name' },
                                 { data: 'umkm.store_name' },
                                 { data: 'category.name' },
                                 { data: 'name' },
