@@ -116,3 +116,27 @@ if (!function_exists('get_categories')) {
     }
 }
 
+if (!function_exists('get_total_unverify_umkm')) {
+
+  function get_total_unverify_umkm()
+  {
+    return DB::table('umkms')->where('verify',0)->count();
+  }
+}
+
+if (!function_exists('get_total_unverify_product')) {
+
+  function get_total_unverify_product()
+  {
+    return DB::table('products')->where('verified',0)->count();
+  }
+}
+
+if (!function_exists('get_total_unconfirm_payment')) {
+
+  function get_total_unconfirm_payment()
+  {
+    return DB::table('orders')->where('sts',1)->count();
+  }
+}
+

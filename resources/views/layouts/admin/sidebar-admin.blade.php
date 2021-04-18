@@ -45,7 +45,9 @@
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-umkm') }}">
           <i class="fas fa-fw fa-check"></i>
-          <span>Verifikasi Umkm</span></a>
+          <span>Verifikasi Umkm</span>
+          <span class="badge badge-danger" style="margin-left:20px">{{ get_total_unverify_umkm() }}</span>
+          </a>
       </li>
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
@@ -69,7 +71,9 @@
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/verify-product') }}">
           <i class="fas fa-fw fa-check"></i>
-          <span>Verifikasi Produk</span></a>
+          <span>Verifikasi Produk</span>
+          <span class="badge badge-danger" style="margin-left:20px">{{get_total_unverify_product()}}</span>
+          </a>
       </li>
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
@@ -91,7 +95,9 @@
       <li class="nav-item" id="organization-committee">
         <a class="nav-link" href="{{ url('admin/payment-confirm') }}">
           <i class="fas fa-fw fa-check"></i>
-          <span>Konfirmasi Pembayaran</span></a>
+          <span>Konfirm Pembayaran</span>
+          <span class="badge badge-danger" style="margin-left:10px"> {{ get_total_unconfirm_payment() }}</span>
+          </a>
       </li>
 
 
