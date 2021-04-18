@@ -37,6 +37,8 @@ class RegistrationUmkmController extends Controller
             Umkm::create([
 
 								'name'       => $request->name,
+                                'nik'        => $request->nik,
+                                'email'      => $request->email,
 								'birthplace' => $request->birthplace,
 								'birthday'   => $request->birthday,
 								'phone'      => $request->phone,
