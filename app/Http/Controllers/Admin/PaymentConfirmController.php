@@ -10,6 +10,7 @@ use DataTables;
 use ResponseService;
 use File;
 use MainService;
+use App\Models\Product;
 
 class PaymentConfirmController extends Controller
 {
@@ -97,8 +98,16 @@ class PaymentConfirmController extends Controller
     {
         $request->request->add([ 'sts' => 2,'image_transaction' => null ]);
 
+
         $data = $this->model->find($id);
         File::delete($data->image_transaction);
+        
+        foreach($data->lists as $l){
+           $product =  Product::where('id',)->find($l->product_id);
+           $product->update([
+            'stock' => $product->stock - $l->ammount
+           ]);
+        }
         return $this->crud_service
                             ->setModel( $this->model )
                             ->setRequest( $request )

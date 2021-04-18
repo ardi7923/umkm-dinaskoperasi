@@ -27,8 +27,10 @@
                   <thead>
                     <tr>
                       <th width="50px">No</th>
+                      <th>Nik</th>
                       <th>Nama</th>
                       <th>Nama Usaha</th>
+                      <th> Email </th>
                       <th width="150px">Action</th>
                     </tr>
                   </thead>
@@ -68,8 +70,10 @@
                             columns: [
                                 { data: 'DT_RowIndex', orderable: false, 
                     searchable: false },
+                                { data: 'nik' },
                                 { data: 'name' },
                                 { data: 'store_name' },
+                                { data: 'email' },
                                 {data : 'action',orderable: false, searchable: false}
                             ]
                         });
