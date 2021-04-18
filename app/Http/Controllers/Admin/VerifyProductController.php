@@ -125,7 +125,17 @@ class VerifyProductController extends Controller
 
                                        ';
                             })
-                        ->rawColumns(['show_image','action'])
+                        ->addColumn('action_stock', function ($data)  {
+                            return '<button 
+                                            class     = "btn btn-circle btn-sm btn-info show_from"
+                                            data-size="lg"
+                                            data-url  = '. url("admin/stock/$data->id/edit") .'
+                                            data-toggle="tooltip" title="Ubah Stok"
+                                            > 
+                                            <i class  = "fa fa-edit"> </i> 
+                                        </button>';
+                            })
+                        ->rawColumns(['show_image','action','action_stock'])
                         ->make(true);
     }
 

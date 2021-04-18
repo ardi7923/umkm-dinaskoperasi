@@ -92,7 +92,8 @@
 												<h3><a href="#">{{ $p->name }}</a></h3>
 												<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists->sum('ammount') ?? 0 }} Terjual </span> 
 												<br>
-												<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $c->name }}</span>
+												<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $c->name }}</span> <br>
+												<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span>
 												<div class="product-price">
 													<span>Rp {{ number_format($p->price,0,',','.') }}</span>
 												</div>
@@ -144,7 +145,9 @@
 									<h5 class="title"><a href="#">{{ $os->name }}</a></h5>
 									<span style="color: #F7941D; font-size: 9pt"> {{ $os->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
 									
-									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $os->category->name }}</span><br>
+									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $os->category->name }}</span>
+									<br>
+												<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($os->price) }}</p>
 								</div>
 							</div>
@@ -176,7 +179,9 @@
 								<div class="content">
 									<h5 class="title"><a href="#">{{ $bs->name }}</a></h5>
 									<span style="color: #F7941D; font-size: 9pt"> {{ $bs->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
-									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $bs->category->name }}</span><br>
+									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $bs->category->name }}</span>
+									<br>
+												<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($bs->price) }}</p>
 								</div>
 							</div>
@@ -209,7 +214,9 @@
 								<div class="content">
 									<h5 class="title"><a href="#">{{ $r->name }}</a></h5>
 									<span style="color: #F7941D; font-size: 9pt"> {{ $r->orderlists()->sum('ammount') ?? 0 }} Terjual </span> <br>
-									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $r->category->name }}</span><br>
+									<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $r->category->name }}</span>
+									<br>
+												<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
 									<p class="price with-discount">{{ rupiah_format($r->price) }}</p>
 								</div>
 							</div>
