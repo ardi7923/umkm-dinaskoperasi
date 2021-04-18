@@ -17,7 +17,9 @@ class RegistrationUmkmController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-			'name'       => 'required',
+			'nik'        => 'required',
+            'name'       => 'required',
+            'email'      => 'required',
 			'birthplace' => 'required',
 			'birthday'   => 'required',
 			'phone'      => 'required',

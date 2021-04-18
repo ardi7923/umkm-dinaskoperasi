@@ -40,51 +40,72 @@
 								<form class="form" method="post" action="{{ url('registration-umkm') }}" enctype="multipart/form-data">
 									@csrf
 									<div class="row">
+									<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Nik<span>*</span></label>
+												<input name="nik" type="text" placeholder="" value="{{ old('nik') }}" required>
+											</div>
+										</div>
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Nama<span>*</span></label>
-												<input name="name" type="text" placeholder="" required>
+												<input name="name" type="text" placeholder="" value="{{ old('name') }}" required>
+											</div>
+										</div>
+										<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Email<span>*</span></label>
+												<input name="email" type="email" placeholder="" value="{{ old('email') }}" required>
 											</div>
 										</div>
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Tempat Lahir<span>*</span></label>
-												<input name="birthplace" type="text" placeholder=""  required>
+												<input name="birthplace" type="text" placeholder="" value="{{ old('birthplace') }}" required>
 											</div>	
 										</div>
 										
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Tanggal Lahir<span>*</span></label>
-												<input name="birthday" class="datepicker" type="text" placeholder="" readonly required>
+												<input name="birthday" class="datepicker" type="text" placeholder="" value="{{ old('birthday') }}" readonly required>
 											</div>	
 										</div>
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Nomor Telepon<span>*</span></label>
-												<input name="phone" type="text" placeholder="" required>
+												<input name="phone" type="text" placeholder="" value="{{ old('phone') }}" required>
 											</div>
 										</div>
 
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Nama Usaha<span>*</span></label>
-												<input name="store_name" type="text" placeholder="">
+												<input name="store_name" type="text" value="{{ old('store_name') }}" placeholder="">
 											</div>
 										</div>
 
 										<div class="col-12">
 											<div class="form-group message">
 												<label>Alamat<span>*</span></label>
-												<textarea name="address" placeholder="" required></textarea>
+												<textarea name="address" placeholder="" required>{{ old('address') }}</textarea>
 											</div>
 										</div>
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Logo<span>*</span></label>
-												<input name="logo" type="file" placeholder="" required>
+												<input name="logo" type="file" placeholder="" value="{{ old('logo') }}" required>
 											</div>
 										</div>
+										@if ($errors->any())
+										    <div class="alert alert-danger">
+										        <ul>
+										            @foreach ($errors->all() as $error)
+										                <li>{{ $error }}</li>
+										            @endforeach
+										        </ul>
+										    </div>
+										@endif
 										<div class="col-12">
 											<div class="form-group button">
 												<button type="submit" class="btn ">Daftar</button>
