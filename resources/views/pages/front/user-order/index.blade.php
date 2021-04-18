@@ -1,5 +1,12 @@
 @extends('layouts.front')
 
+@section('styles_page')
+    <!-- Custom styles for this page -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('plugins/sweetalert2/dist/sweetalert2.min.css') }}">
+  <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+@endsection
+
 @section('content')
 <!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -71,14 +78,25 @@
 														Kirim Bukti Pembayaran
 													</button>
 												</a>
+												
+												<a href="{{ url('user-order/'.$c->id) }}">
+													<button type="" class="btn"> 
+														Batalkan Pemesanan
+													</button>
+												</a>
 												@elseif($c->sts == 1)
 												<!-- 	<span class="badge badge-warning"> tes </span> -->
 												@elseif($c->sts == 3) 
 												<a href="{{ url('user-order/'.$c->id) }}">
-													<button type="" class="btn"> 
+													<button type="" class="btn" style="width: 280px;"> 
 														Kirim Ulang Bukti Pembayaran
 													</button>
-												</a>
+												</a><br>
+												
+												
+													<button type="" class="btn btn-delete" data-id="{{ $c->id }}" style="margin-top: 5px; width: 280px;"> 
+														Batalkan Pemesanan
+													</button>
 												@else
 												
 												<!-- 	<span class="badge badge-success"> tes </span> -->
@@ -113,4 +131,74 @@
 
 		</div>
 	
+@endsection
+
+@section('scripts_page')
+  <!-- Page level custom scripts -->
+  <script src="{{ asset('plugins/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+  <script src="{{ asset('js/main.js') }}"></script>
+
+@endsection
+
+@section('js')
+<script>
+$('.btn-delete').click(function(){
+	var data = {
+				_method : 'DELETE',
+				_token  : $('meta[name="token"]').attr('content')
+			   };
+
+	Swal({
+          title: 'Apakah Anda Yakin?',
+          html: "Membatalkan Pemesanan ini ?",
+          type: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: '<i class="fa fa-trash"></i> YA',
+          cancelButtonText: '<i class="fa fa-reply-all"></i> Batal',
+          showCancelButton: true,
+          showLoaderOnConfirm: true,
+          allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+			id = $(this).attr('data-id');
+            deleteData2( "user-order/"+id,data)
+          
+        })
+});
+
+const deleteData2 =  function(url,data){
+
+$.ajax({
+  url  : url,
+  data : data,
+  type : "POST",
+  dataType : 'json',
+  success : function(response){
+	  if(response['code'] == 200){
+		
+		  location.reload();
+		
+		Swal({
+		  title:'Berhasil',
+		  text:response['msg'],
+		  type:'success',
+		  showConfirmButton:false,
+		  timer:2000,
+		  allowOutsideClick:false,
+		})
+	  }else{
+		 Swal({
+		  title:'Perhatian',
+		  text:response['errors'],
+		  type:'error'
+		})
+	  }
+  }
+});
+
+return false;
+}
+
+</script>
 @endsection

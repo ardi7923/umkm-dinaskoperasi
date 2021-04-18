@@ -8,6 +8,7 @@ use Auth;
 use App\Models\Order;
 use MainService;
 use Image;
+use ResponseService;
 
 class UserOrderController extends Controller
 {
@@ -99,8 +100,26 @@ class UserOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,ResponseService $response)
     {
-        //
+        try {
+            $data = Order::find($id);
+            if($data->image_transaction){
+                File::delete($data->image);
+            }
+            $data->lists()->delete();
+            $data->delete();
+
+            return $response->setCode(200)
+            ->setMsg("Pemesanan Berhasil Dibatalkan")
+            ->success();
+
+        } catch (Exception $e) {
+            $code   = $e->getCode();
+            $errors = [$e->getMessage()];
+            return $response->setCode($code)
+            ->setErrors($errors)
+            ->error();
+        }
     }
 }
