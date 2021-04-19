@@ -33,6 +33,10 @@
           <th>{{ number_format($data->price) }}</th>
         </tr>
         <tr>
+          <th>Stok</th>
+          <th>{{ $data->stock }}</th>
+        </tr>
+        <tr>
           <th>Deskripsi</th>
           <th>{{ $data->description }}</th>
         </tr>

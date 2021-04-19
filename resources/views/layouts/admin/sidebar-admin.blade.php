@@ -77,7 +77,7 @@
       </li>
 
       <li class="nav-item" id="organization-committee" style="margin-top: -20px">
-        <a class="nav-link" href="{{ url('admin/data-product') }}">
+        <a class="nav-link" href="{{ url('admin/umkm-product') }}">
           <i class="fas fa-fw fa-archive"></i>
           <span>Data Produk</span></a>
       </li>

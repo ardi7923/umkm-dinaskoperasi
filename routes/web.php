@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('user-umkm','UserUmkmController');
 		Route::resource('verify-product','VerifyProductController');
 		Route::resource('data-product','DataProductController');
+		Route::resource('umkm-product','UmkmProductController');
 		Route::resource('stock','StockController');
 		Route::resource('bank','BankController');
 		Route::resource('payment-confirm','PaymentConfirmController');
