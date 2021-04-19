@@ -112,6 +112,15 @@ class UmkmProductController extends Controller
                                             > 
                                             <i class  = "fa fa-eye"> </i> 
                                        </button>
+                                    
+                                    <button 
+                                       class     = "btn btn-circle btn-sm btn-warning show_from"
+                                       data-size="lg"
+                                       data-url  = '. url("admin/stock/$data->id/edit") .'
+                                       data-toggle="tooltip" title="Ubah Stock"
+                                       > 
+                                       <i class  = "fa fa-archive"> </i> 
+                                   </button>
 
                                        <button 
                                                 type           ="button"  

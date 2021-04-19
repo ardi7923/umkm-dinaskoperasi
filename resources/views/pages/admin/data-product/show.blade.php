@@ -13,7 +13,7 @@
     <table class="table table-hover table-striped table-bordered">
       <thead>
         <tr>
-          <th>Nama Toko</th>
+          <th style="width: 200px;">Nama Toko</th>
           <th>{{ $data->umkm->store_name }}</th>
         </tr>
         <tr>

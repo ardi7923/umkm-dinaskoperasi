@@ -82,12 +82,6 @@
           <span>Data Produk</span></a>
       </li>
 
-      <li class="nav-item" id="organization-committee" style="margin-top: -20px">
-        <a class="nav-link" href="{{ url('admin/stock') }}">
-          <i class="fas fa-fw fa-archive"></i>
-          <span>Stok Produk</span></a>
-      </li>
-
       <div class="sidebar-heading">
         Pemesanan
       </div>

@@ -147,7 +147,8 @@ class DataProductController extends Controller
                                             data-toggle="tooltip" title="Lihat Data"
                                             > 
                                             <i class  = "fa fa-eye"> </i> 
-                                       </button>
+                                            
+                                            </button>
 
                                        <button 
                                                 type           ="button"  
