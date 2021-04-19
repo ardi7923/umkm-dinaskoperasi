@@ -31,8 +31,7 @@ class sendUsernameUmkm extends Mailable
     public function build()
     {   
         $data = $this->data;
-        return $this->to($this->data['email'])
-                    ->subject("Notifikasi Berhasil Bergabung menjadi mitra")
-                    ->view('mails.warning',compact('data'));
+        return $this->subject("Notifikasi Berhasil Bergabung menjadi mitra")
+                    ->view('mails.notif-umkm',compact('data'));
     }
 }

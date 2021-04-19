@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard','Admin\DashboardController@index');
 
 	Route::group(['namespace' => 'Admin','prefix' => 'admin'],function(){
+		Route::get('tes-email','TesEmailController@tes');
 		Route::resource('category','CategoryController');
 		Route::resource('verify-umkm','VerifyUmkmController');
 		Route::resource('data-umkm','DataUmkmController');

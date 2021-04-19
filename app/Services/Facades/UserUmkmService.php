@@ -8,7 +8,7 @@ use MainService;
 use Image;
 use File;
 use Mail;
-use Umkm;
+use App\Models\Umkm;
 use App\Mail\sendUsernameUmkm;
 
 class UserUmkmService{
