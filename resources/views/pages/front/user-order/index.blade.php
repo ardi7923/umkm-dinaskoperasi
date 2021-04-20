@@ -73,12 +73,12 @@
 											</td>
 											<td>
 												@if($c->sts == 0) 
-												<a href="{{ url('user-order/'.$c->id) }}" style="width: 280px;">
-													<button type="" class="btn"> 
+												<a href="{{ url('user-order/'.$c->id) }}" >
+													<button type="" class="btn" style="width: 280px;"> 
 														Kirim Bukti Pembayaran
 													</button>
 												</a>
-												
+												<br>
 												<button type="" class="btn btn-delete" data-id="{{ $c->id }}" style="margin-top: 5px; width: 280px;"> 
 														Batalkan Pemesanan
 												</button>
@@ -159,8 +159,10 @@ $('.btn-delete').click(function(){
           showLoaderOnConfirm: true,
           allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
-			id = $(this).attr('data-id');
-            deleteData2( "user-order/"+id,data)
+			if (result.value) {
+				id = $(this).attr('data-id');
+				deleteData2( "user-order/"+id,data);
+			}
           
         })
 });
