@@ -96,7 +96,7 @@ class PaymentConfirmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->request->add([ 'sts' => 2,'image_transaction' => null ]);
+        
 
 
         $data = $this->model->find($id);
@@ -108,6 +108,8 @@ class PaymentConfirmController extends Controller
             'stock' => $product->stock - $l->ammount
            ]);
         }
+        
+        $request->request->add([ 'sts' => 2,'image_transaction' => null ]);
         return $this->crud_service
                             ->setModel( $this->model )
                             ->setRequest( $request )
