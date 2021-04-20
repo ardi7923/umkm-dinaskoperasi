@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Image;
 Use App\Models\Umkm;
+use App\Models\District;
 
 class RegistrationUmkmController extends Controller
 {
     public function index()
     {
-    	return view('pages.front.registration-umkm.index');
+        $districts = District::all();
+
+    	return view('pages.front.registration-umkm.index',compact('districts'));
     }
 
     public function store(Request $request)
@@ -43,6 +46,7 @@ class RegistrationUmkmController extends Controller
 								'birthday'   => $request->birthday,
 								'phone'      => $request->phone,
 								'address'    => $request->address,
+                                'district'   => $request->district,
 								'store_name' => $request->store_name,
 								'logo'       => $namaFile,
 

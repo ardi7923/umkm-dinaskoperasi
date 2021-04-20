@@ -84,6 +84,19 @@
 												<input name="store_name" type="text" value="{{ old('store_name') }}" placeholder="">
 											</div>
 										</div>
+										
+										<div class="col-lg-12 col-12">
+											<div class="form-group">
+												<label>Kabupaten<span>*</span></label><br>
+												<select name="district_id" class="district_id"  required >
+													<option value="" disabled selected>--PILIH--</option>
+													@foreach( $districts as $d )
+														<option value="{{ $d->id }}"> {{ $d->name }} </option>
+														
+													@endforeach
+												</select>
+											</div>
+										</div>
 
 										<div class="col-12">
 											<div class="form-group message">
