@@ -17,7 +17,7 @@ class ProductController extends Controller
 
         if ($q) {
             $products = Product::where('name', 'like', '%' . $q . '%')->verified()
-                ->orWhereHas('umkm',function(Builder $query) use $q{
+                ->orWhereHas('umkm',function(Builder $query) use ($q){
                     return $query->where('district', 'like', '%' . $q . '%');
                 })
                 ->orWhereHas('category', function (Builder $query) use ($q) {
