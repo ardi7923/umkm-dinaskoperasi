@@ -79,11 +79,9 @@
 													</button>
 												</a>
 												
-												<a href="{{ url('user-order/'.$c->id) }}">
-													<button type="" class="btn"> 
+												<button type="" class="btn btn-delete" data-id="{{ $c->id }}" style="margin-top: 5px; width: 280px;"> 
 														Batalkan Pemesanan
-													</button>
-												</a>
+												</button>
 												@elseif($c->sts == 1)
 												<!-- 	<span class="badge badge-warning"> tes </span> -->
 												@elseif($c->sts == 3) 
