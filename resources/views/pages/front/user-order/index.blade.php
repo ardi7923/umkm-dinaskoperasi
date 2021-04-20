@@ -73,7 +73,7 @@
 											</td>
 											<td>
 												@if($c->sts == 0) 
-												<a href="{{ url('user-order/'.$c->id) }}">
+												<a href="{{ url('user-order/'.$c->id) }}" style="width: 280px;">
 													<button type="" class="btn"> 
 														Kirim Bukti Pembayaran
 													</button>
