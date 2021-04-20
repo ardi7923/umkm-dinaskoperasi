@@ -27,7 +27,7 @@ class HomeController extends Controller
 
 		$recomendeds = Product::with('orderlists')->get();
 
-		if (!$recomendeds->count() > 3) {
+		if ($recomendeds->count() > 3) {
 			$recomendeds = $recomendeds->random(3);
 		}
 

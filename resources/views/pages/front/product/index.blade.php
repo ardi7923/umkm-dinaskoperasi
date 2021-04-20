@@ -49,6 +49,7 @@
 						<h3><a href="product-details.html">{{ $p->name }}</a></h3>
 						<span style="color: #F7941D; font-size: 9pt"> {{ $p->orderlists()->sum('ammount') ?? 0}} Terjual </span> <br>
 						<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $p->category->name }}</span>
+						<span class="badge badge-success" style="color : white; font-size: 7pt"> {{ $p->umkm->district }}</span>
 						<br>
 												<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span>
 						<div class="product-price">
