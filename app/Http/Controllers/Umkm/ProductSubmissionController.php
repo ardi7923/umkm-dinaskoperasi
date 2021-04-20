@@ -134,7 +134,7 @@ class ProductSubmissionController extends Controller
      */
     public function datatable()
     {
-        $data = $this->model->query()->unverified()->with('category');
+        $data = $this->model->query()->unverified()->isUmkm()->with('category');
         return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('show_image', function ($data) {
