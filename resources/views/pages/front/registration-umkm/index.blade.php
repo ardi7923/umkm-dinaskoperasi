@@ -88,10 +88,10 @@
 										<div class="col-lg-12 col-12">
 											<div class="form-group">
 												<label>Kabupaten<span>*</span></label><br>
-												<select name="district_id" class="district_id"  required >
+												<select name="district" class="district_id"  required >
 													<option value="" disabled selected>--PILIH--</option>
 													@foreach( $districts as $d )
-														<option value="{{ $d->id }}"> {{ $d->name }} </option>
+														<option> {{ $d->name }} </option>
 														
 													@endforeach
 												</select>
