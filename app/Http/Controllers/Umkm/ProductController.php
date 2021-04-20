@@ -114,7 +114,7 @@ class ProductController extends Controller
      */
     public function datatable()
     {
-        $data = $this->model->query()->verified()->with('category');
+        $data = $this->model->query()->verified()->isUmkm()->with('category');
         return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('show_image', function ($data) {
