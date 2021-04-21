@@ -69,6 +69,9 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('product-submission','ProductSubmissionController');
 		Route::resource('product','ProductController');
 	});
+
+	Route::get('seo-table','SeoController@index');
+	Route::get('seo-statistik','SeoController@statistik');
 	
 
 	

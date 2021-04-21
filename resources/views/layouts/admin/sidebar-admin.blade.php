@@ -108,6 +108,20 @@
               </div>
           </div>
       </li>
+
+      <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-fw fa-chart-bar"></i>
+              <span>Seo</span>
+          </a>
+          <div id="collapseSeo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Seo:</h6>
+                  <a class="collapse-item" href="{{ url('seo-table') }}">Table</a>
+                  <a class="collapse-item" href="{{  url('seo-statistik') }}">Statistik</a>
+              </div>
+          </div>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

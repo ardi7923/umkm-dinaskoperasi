@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use MainService;
 use App\Models\OrderList;
+use App\Models\Keyword;
 
 class ProductController extends Controller
 {
@@ -16,6 +17,11 @@ class ProductController extends Controller
         $q     =  $request->q;
 
         if ($q) {
+                Keyword::create([
+                    'keyword'   => $q
+                ]);
+
+
             $products = Product::where('name', 'like', '%' . $q . '%')->verified()
                 ->orWhereHas('umkm',function(Builder $query) use ($q){
                     return $query->where('district', 'like', '%' . $q . '%');
