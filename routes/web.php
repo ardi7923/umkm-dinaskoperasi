@@ -41,6 +41,7 @@ Route::get('checkout-success', 'Front\CheckoutController@success');
 
 Route::resource('user-order', 'Front\UserOrderController');
 Route::get('user-order-success', 'Front\UserOrderController@success');
+Route::resource('product-rate','Front\ProductRateController');
 
 Route::group(['middleware' => 'auth'], function () { 
 

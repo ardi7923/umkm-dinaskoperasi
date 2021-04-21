@@ -19,7 +19,11 @@
 	
 	@include('layouts.front.styles')
 	@yield('styles_page')
-	
+	<style>
+	.checked {
+  color: orange;
+}
+</style>
 </head>
 <body class="js">
 	

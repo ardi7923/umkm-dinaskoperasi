@@ -140,3 +140,25 @@ if (!function_exists('get_total_unconfirm_payment')) {
   }
 }
 
+if (!function_exists('get_product_rate')) {
+
+  function get_product_rate($product_id,$user_id)
+  {
+    return DB::table('product_rates')->where(['user_id'=> $user_id,'product_id'=> $product_id])->first();
+  }
+}
+
+if (!function_exists('get_avg_product_rate')) {
+
+  function get_avg_product_rate($product_id)
+  {
+     $total_data =  DB::table('product_rates')->where(['product_id'=> $product_id])->count();
+     $sum = DB::table('product_rates')->where(['product_id'=> $product_id])->sum('rate');
+     if($total_data == 0){
+       return 0;
+     }else{
+      return round($sum/$total_data);
+     }
+  }
+}
+

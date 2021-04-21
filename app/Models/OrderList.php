@@ -29,4 +29,9 @@ class OrderList extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function rate()
+    {
+        return $this->hasOne(ProductRate::class,'product_id','product_id');
+    }
 }
