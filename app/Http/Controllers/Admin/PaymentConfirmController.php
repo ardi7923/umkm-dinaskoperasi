@@ -103,7 +103,7 @@ class PaymentConfirmController extends Controller
         File::delete($data->image_transaction);
         
         foreach($data->lists as $l){
-           $product =  Product::where('id',)->find($l->product_id);
+           $product =  Product::find($l->product_id);
            $product->update([
             'stock' => $product->stock - $l->ammount
            ]);
