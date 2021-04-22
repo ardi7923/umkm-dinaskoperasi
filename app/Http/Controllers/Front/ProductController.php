@@ -18,7 +18,7 @@ class ProductController extends Controller
 
         if ($q) {
                 Keyword::create([
-                    'keyword'   => $q
+                    'keyword'   => strtolower($q)
                 ]);
 
 
