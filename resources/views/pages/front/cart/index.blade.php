@@ -56,7 +56,7 @@
 													</button>
 												</div>
 
-												<input type="text" name="quant[{{ $i }}]"  class="input-number inputqty-{{ $i }}" data-min="1" data-max="100" value="{{ $c->qty ?? 1 }}" readonly>
+												<input type="text" name="quant[{{ $i }}]"  class="input-number inputqty-{{ $i }}" data-min="1" data-max="{{ $c->product->stock }}" value="{{ $c->qty ?? 1 }}" readonly>
 												
 
 												<div class="button plus">

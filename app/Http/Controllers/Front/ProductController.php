@@ -22,7 +22,9 @@ class ProductController extends Controller
                 ]);
 
 
-            $products = Product::where('name', 'like', '%' . $q . '%')->verified()
+            $products = Product::where('name', 'like', '%' . $q . '%')
+                ->where('stock','>',0)
+                ->verified()
                 ->orWhereHas('umkm',function(Builder $query) use ($q){
                     return $query->where('district', 'like', '%' . $q . '%');
                 })
@@ -36,7 +38,7 @@ class ProductController extends Controller
 
             
         } else {
-            $products = Product::verified()->get()->sortByDesc(function($products)
+            $products = Product::verified()->where('stock','>',0)->get()->sortByDesc(function($products)
             {
                     return $products->orderlists()->sum('ammount');
             });
