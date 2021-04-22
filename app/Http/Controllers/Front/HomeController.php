@@ -13,19 +13,21 @@ class HomeController extends Controller
     public function index()
     {
     	
-    	$categories = Category::with('product.orderlists')->get();
+    	$categories = Category::whereHas('product',function($q){
+			return $q->where('stock','>',0)->verified();
+		})->with('product.orderlists')->get();
 
-    	$best_sellers = Product::with('orderlists')->limit(3)->get()->sortByDesc(function($best_sellers)
+    	$best_sellers = Product::where('stock','>',0)->verified()->with('orderlists')->limit(3)->get()->sortByDesc(function($best_sellers)
 		{
 				return $best_sellers->orderlists()->sum('ammount');
 		});
 
-		$on_sales = Product::WhereHas('orderlists')->with('orderlists')->limit(3)->get()->sortByDesc(function($best_sellers)
+		$on_sales = Product::where('stock','>',0)->verified()->WhereHas('orderlists')->with('orderlists')->limit(3)->get()->sortByDesc(function($best_sellers)
 		{
 				return $best_sellers->orderlists()->sum('ammount');
 		});
 
-		$recomendeds = Product::with('orderlists')->get();
+		$recomendeds = Product::where('stock','>',0)->verified()->with('orderlists')->get();
 
 		if ($recomendeds->count() > 3) {
 			$recomendeds = $recomendeds->random(3);

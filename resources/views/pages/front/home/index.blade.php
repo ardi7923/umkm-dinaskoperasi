@@ -69,7 +69,7 @@
 						<div class="tab-pane fade show {{ ($i == 0) ? 'active' : '' }}" id="{{ $c->id }}" role="tabpanel">
 							<div class="tab-single">
 								<div class="row">
-									@foreach( $c->product()->limit(8)->get()->sortByDesc(function($best_sellers)
+									@foreach( $c->product()->where('stock','>',0)->limit(8)->get()->sortByDesc(function($best_sellers)
 									{
 									return $best_sellers->orderlists()->sum('ammount');
 									}) as $p )
@@ -154,7 +154,7 @@
 								<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $os->category->name }}</span>
 								<span class="badge badge-success" style="color : white; font-size: 7pt"> {{ $os->umkm->district }}</span>
 								<br>
-								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
+								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $os->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($os->id)]) <br>
 								<p class="price with-discount">{{ rupiah_format($os->price) }}</p>
 							</div>
@@ -190,7 +190,7 @@
 								<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $bs->category->name }}</span>
 								<span class="badge badge-success" style="color : white; font-size: 7pt"> {{ $bs->umkm->district }}</span>
 								<br>
-								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
+								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $bs->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($bs->id)])<br>
 								<p class="price with-discount">{{ rupiah_format($bs->price) }}</p>
 							</div>
@@ -227,7 +227,7 @@
 								<span class="badge" style="background-color: #F7941D;color : white; font-size: 7pt"> {{ $r->category->name }}</span>
 								<span class="badge badge-success" style="color : white; font-size: 7pt"> {{ $r->umkm->district }}</span>
 								<br>
-								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $p->stock }}</span><br>
+								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $r->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($r->id)])<br>
 								<p class="price with-discount">{{ rupiah_format($r->price) }}</p>
 							</div>

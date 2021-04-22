@@ -53,7 +53,7 @@ Pendaftaran Mitra
 						<h2>PRODUK</h2>
 					</div>
 					<div class="row">
-						@foreach( $umkm->products as $p )
+						@foreach( $umkm->products()->where('stock','>',0)->get() as $p )
 
 						<div class="col-xl-4 col-lg-4 col-md-4 col-12">
 							<div class="single-product">
