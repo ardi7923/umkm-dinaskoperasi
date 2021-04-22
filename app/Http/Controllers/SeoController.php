@@ -22,18 +22,19 @@ class SeoController extends Controller
     {
         $month = $request->month;
         if($request->month){
-            $keywords = Keyword::whereMonth('created_at',$request->month)->limit(10)->get()->unique('keyword');
+            $keywords = Keyword::whereMonth('created_at',$request->month)->get()->unique('keyword');
             foreach($keywords as $k){
                 $k->frequency = Keyword::where('keyword',$k->keyword)->whereMonth('created_at',$request->month)->count();
             }
-            $collection = collect($keywords)->sortByDesc('frequency');
+            $collection = collect($keywords)->sortByDesc('frequency')->take(10);
         }else{
-            $keywords = Keyword::limit(10)->get()->unique('keyword');
+            $keywords = Keyword::get()->unique('keyword');
             foreach($keywords as $k){
                 $k->frequency = Keyword::where('keyword',$k->keyword)->count();
             }
-            $collection = collect($keywords)->sortByDesc('frequency');
+            $collection = collect($keywords)->sortByDesc('frequency')->take(10);
         }
+
         
 
         return view('pages.seo.statistik',compact('collection','month'));
