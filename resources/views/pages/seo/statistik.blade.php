@@ -94,7 +94,7 @@
     console.log(statistiks);
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {
             labels: label,
             datasets: [{
