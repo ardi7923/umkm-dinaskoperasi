@@ -106,7 +106,9 @@
 									<div class="form-check" style="margin-left: 50px; margin-top: 20px">
 									  <input class="form-check-input" type="radio" name="bank_id"  value="{{ $b->id }}" {{ ($i == 0) ? 'checked' : '' }}>
 									  <label class="form-check-label" for="exampleRadios1">
-									    ({{ $b->alias }}) {{ $b->name }} 
+									    ({{ $b->alias }}) {{ $b->name }} <br>
+										A.n {{ $b->account_name }} <br>
+										{{ $b->account_number }}
 									  </label>
 									</div>
 									@endforeach
