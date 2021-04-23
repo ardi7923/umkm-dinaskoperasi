@@ -91,9 +91,9 @@
 								<h2>Total Keranjang</h2>
 								<div class="content">
 									<ul>
-									<!-- 	<li>Sub Total<span>$330.00</span></li>
-										<li>(+) Shipping<span>$10.00</span></li> -->
-										<li class="last">Total<span>Rp. {{ rupiah_format(Auth::user()->carts->sum('total')) }}</span></li>
+										<li>Sub Total<span>{{ rupiah_format(Auth::user()->carts->sum('total')) }}</span></li>
+										<li>Potongan<span style="color:red">-{{ rupiah_format(Auth::user()->carts->sum('total_discount')) }}</span></li> 
+										<li class="last">Total<span>Rp. {{ rupiah_format(Auth::user()->carts->sum('total') - Auth::user()->carts->sum('total_discount')) }}</span></li>
 									</ul>
 								</div>
 							</div>

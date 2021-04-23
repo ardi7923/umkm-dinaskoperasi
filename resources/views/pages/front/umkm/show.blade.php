@@ -83,6 +83,9 @@ Pendaftaran Mitra
 									<div class="product-price">
 										<span>Rp {{ rupiah_format($p->price) }}</span>
 									</div>
+									@if($p->discount)
+									<i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($p->discount) }} </i>
+								@endif
 								</div>
 							</div>
 						</div>

@@ -12,7 +12,7 @@ class UserCart extends Model
     use HasFactory;
 
     protected $table = 'product_user';
-    protected $appends = ['total'];
+    protected $appends = ['total','total_discount'];
     // protected $visible = ['total'];
 
     /**
@@ -32,5 +32,10 @@ class UserCart extends Model
     public function getTotalAttribute()
     {
         return ($this->qty) ?  $this->product->price * $this->qty : $this->product->price;
+    }
+
+    public function getTotalDiscountAttribute()
+    {
+        return ($this->qty) ?  $this->product->discount * $this->qty : $this->product->discount;
     }
 }

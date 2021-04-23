@@ -103,6 +103,9 @@ class UmkmProductController extends Controller
                         ->addColumn('show_price',function($data){
                         	return number_format($data->price);
                         })
+                        ->addColumn('show_discount',function($data){
+                        	return number_format($data->discount);
+                        })
                         ->addColumn('action', function ($data)  {
                             return '<button 
                                             class     = "btn btn-circle btn-sm btn-info show_from"
@@ -120,6 +123,15 @@ class UmkmProductController extends Controller
                                        data-toggle="tooltip" title="Ubah Stock"
                                        > 
                                        <i class  = "fa fa-archive"> </i> 
+                                   </button>
+
+                                   <button 
+                                       class     = "btn btn-circle btn-sm btn-success show_from"
+                                       data-size="lg"
+                                       data-url  = '. url("admin/discount/$data->id/edit") .'
+                                       data-toggle="tooltip" title="Ubah Stock"
+                                       > 
+                                       <i class  = "fa fa-dollar-sign"> </i> 
                                    </button>
 
                                        <button 

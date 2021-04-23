@@ -35,6 +35,7 @@
 										<th>NAMA</th>
 										<th class="text-center">HARGA SATUAN</th>
 										<th class="text-center">JUMLAH</th>
+										<th class="text-center">POTONGAN HARGA</th>
 										<th class="text-center">TOTAL</th> 
 										<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 									</tr>
@@ -51,7 +52,7 @@
 										<td class="qty" data-title="Qty"><!-- Input Order -->
 											<div class="input-group">
 												<div class="button minus">
-													<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[{{ $i }}]" disabled="disabled" onclick="minus('{{ $i }}','{{ $c->product->price }}')">
+													<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[{{ $i }}]" disabled="disabled" onclick="minus('{{ $i }}','{{ $c->product->price }}','{{ $c->product->discount }}')">
 														<i class="ti-minus"></i>
 													</button>
 												</div>
@@ -60,12 +61,15 @@
 												
 
 												<div class="button plus">
-													<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{ $i }}]" onclick="plus('{{ $i }}','{{ $c->product->price }}')">
+													<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{ $i }}]" onclick="plus('{{ $i }}','{{ $c->product->price }}','{{ $c->product->discount }}')">
 														<i class="ti-plus"></i>
 													</button>
 												</div>
 											</div>
 											<!--/ End Input Order -->
+										</td>
+										<td class="total-amount" data-title="Total">
+											<span id="totaldiscount-{{ $i }}"> {{ ($c->qty) ? rupiah_format( $c->product->discount * $c->qty ) : rupiah_format( $c->product->discount  ) }} </span>
 										</td>
 										<td class="total-amount" data-title="Total">
 											<span id="totalproduct-{{ $i }}"> {{ ($c->qty) ? rupiah_format( $c->product->price * $c->qty ) : rupiah_format( $c->product->price  ) }} </span>
@@ -104,13 +108,12 @@
 									<div class="col-lg-4 col-md-7 col-12">
 										<div class="right">
 											<ul>
-												<!-- <li>Subtotal<span id="sub_total">Rp. {{ rupiah_format(Auth::user()->products()->sum('price')) }}</span></li> -->
-											<!-- 	<li>Shipping<span>Free</span></li>
-												<li>You Save<span>$20.00</span></li> -->
+												<li>Subtotal<span id="sub-total">{{ rupiah_format( $carts->sum('total') ) }}</span></li> 
+												<li>Potongan<span id="total-discount">{{ rupiah_format( $carts->sum('total_discount') ) }}</span></li>
 												<li class="last" >
 													Total<span id="total"> Rp. {{ rupiah_format($carts->sum('total')) }} </span>
 												</li>
-
+												<input type="hidden" id="input-discount" value="{{$carts->sum('total_discount') }}">
 												<input type="hidden" id="input-total" value="{{$carts->sum('total') }}">
 											</ul>
 											<div class="button5">
@@ -158,28 +161,43 @@
 
 @section('js')
 	<script>
-		function minus(id,price)
+		function minus(id,price,discount)
 		{
 			qty = $('.inputqty-'+id).val();
 			inputqty = parseInt(qty)-1;
 
 			inputtotal = $('#input-total').val();
+			inputdiscount = $('#input-discount').val();
 			total = inputtotal - price;
+			total_discount = inputdiscount - discount;
+
 			$('.inputhiddenqty-'+id).val(inputqty);
 			$('#input-total').val(total);
-			$('#total').text('Rp. ' + numberWithCommas(total));
+			$('#input-discount').val(total_discount);
+			$('#total-discount').text('Rp. ' + numberWithCommas(total_discount));
+			$('#sub-total').text('Rp. ' + numberWithCommas(total));
+			$('#total').text('Rp. ' + numberWithCommas(total - total_discount));
+			$('#totaldiscount-'+id).text(numberWithCommas(inputqty * discount));
 			$('#totalproduct-'+id).text( numberWithCommas(price * inputqty) );
 		}
 
-		function plus(id,price)
+		function plus(id,price,discount)
 		{
 			var qty = $('.inputqty-'+id).val();
 			inputqty = parseInt(qty)+1;
 			inputtotal = $('#input-total').val();
+			inputdiscount = $('#input-discount').val();
+
 			total = parseInt(inputtotal) + parseInt(price);
+			total_discount = parseInt(inputdiscount) + parseInt(discount);
+			
 			$('.inputhiddenqty-'+id).val(inputqty);
 			$('#input-total').val(total);
-			$('#total').text('Rp. ' + numberWithCommas(total));
+			$('#input-discount').val(total_discount);
+			$('#total-discount').text('Rp. ' + numberWithCommas(total_discount));
+			$('#sub-total').text('Rp. ' + numberWithCommas(total));
+			$('#total').text('Rp. ' + numberWithCommas(total - total_discount));
+			$('#totaldiscount-'+id).text(numberWithCommas(inputqty * discount));
 			$('#totalproduct-'+id).text(numberWithCommas(price * inputqty));
 		}
 

@@ -56,6 +56,9 @@
 					<div class="product-price">
 						<span>Rp {{ number_format($p->price,0,',','.') }}</span>
 					</div>
+					@if($p->discount)
+						<i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($p->discount) }} </i>
+					@endif
 				</div>
 			</div>
 		</div>

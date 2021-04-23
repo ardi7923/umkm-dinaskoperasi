@@ -33,7 +33,9 @@
                       <th >Kategori</th>
                       <th >Nama Produk</th>
                       <th >Harga</th>
+                      <th >Diskon</th>
                       <th >Stok</th>
+                      
                       <th width="150px">Action</th>
                     </tr>
                   </thead>
@@ -77,7 +79,9 @@
                                 { data: 'category.name' },
                                 { data: 'name' },
                                 { data: 'show_price' },
+                                { data: 'show_discount' },
                                 { data: 'stock' },
+                                
                                 {data : 'action',orderable: false, searchable: false}
                             ]
                         });

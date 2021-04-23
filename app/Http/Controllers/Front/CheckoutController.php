@@ -79,15 +79,19 @@ class CheckoutController extends Controller
                                       ]);
                 foreach ($carts as $key => $c) {
 
+                    $sub_total      = $c->product->price * $c->qty;
+                    $total_discount = $c->product->discount * $c->qty;
                    OrderList::create([ 
-                        'order_id'    => $order->id,
-                        'product_id'  => $c->product->id,
-                        'name'        => $c->product->name,
-                        'description' => $c->product->description,
-                        'price'       => $c->product->price,
-                        'image'       => $c->product->image,
-                        'ammount'     => $c->qty,
-                        'total_price' => $c->product->price * $c->qty
+                        'order_id'       => $order->id,
+                        'product_id'     => $c->product->id,
+                        'name'           => $c->product->name,
+                        'description'    => $c->product->description,
+                        'price'          => $c->product->price,
+                        'image'          => $c->product->image,
+                        'ammount'        => $c->qty,
+                        'sub_total'      => $sub_total,
+                        'total_discount' => $total_discount,
+                        'total_price'    => $sub_total - $total_discount
                         
 
                    ]);

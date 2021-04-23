@@ -100,9 +100,14 @@
 												<br>
 												
 												@include('components.product-rate',['value'=> get_avg_product_rate($p->id)])
+												<br>
+												
 												<div class="product-price">
 													<span>Rp {{ number_format($p->price,0,',','.') }}</span>
 												</div>
+												@if($p->discount)
+													<i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($p->discount) }} </i>
+												@endif
 											</div>
 										</div>
 									</div>
@@ -157,6 +162,9 @@
 								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $os->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($os->id)]) <br>
 								<p class="price with-discount">{{ rupiah_format($os->price) }}</p>
+								@if($os->discount)
+									<br><i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($os->discount) }} </i>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -193,6 +201,9 @@
 								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $bs->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($bs->id)])<br>
 								<p class="price with-discount">{{ rupiah_format($bs->price) }}</p>
+								@if($bs->discount)
+									<br><i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($bs->discount) }} </i>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -230,6 +241,9 @@
 								<span class="badge badge-secondary" style="color : white; font-size: 7pt"> Stok : {{ $r->stock }}</span><br>
 								@include('components.product-rate',['value'=> get_avg_product_rate($r->id)])<br>
 								<p class="price with-discount">{{ rupiah_format($r->price) }}</p>
+								@if($r->discount)
+									<br><i style="font-size: 8pt;color:red">Potongan Harga Rp. {{ rupiah_format($r->discount) }} </i>
+								@endif
 							</div>
 						</div>
 					</div>

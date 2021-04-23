@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('data-product','DataProductController');
 		Route::resource('umkm-product','UmkmProductController');
 		Route::resource('stock','StockController');
+		Route::resource('discount','DiscountController');
 		Route::resource('bank','BankController');
 		Route::resource('payment-confirm','PaymentConfirmController');
 		Route::get('statistik/product','StatistikProductController@index');
