@@ -141,6 +141,7 @@
 		<div class="modal-dialog modal-sm modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-body">
+					<h5 id="title-search-result">Hasil Pencarian</h5>
 					<div id="search-result"></div>
 					<h5>Pencarian Populer</h5>
 					<div class="row my-4">
@@ -166,6 +167,7 @@
 
 		$('#input-search').keyup(function() {
 			$('#searchModal').modal('show');
+			$('#title-search-result').show();
 			keyword = $(this).val();
 			$.ajax({
 				url: "{{ url('search?q=') }}"+keyword,
@@ -177,6 +179,7 @@
 
 				success: function(response) {
 					if(keyword.length == 0){
+						$('#title-search-result').hide();
 						$('#search-result').html(``);
 					}else if(response.length == 0){
 						$('#search-result').html(` <a href="{{ url('product?q=') }}`+ keyword+` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> `+ keyword +`  </p> </a>`);
@@ -206,9 +209,12 @@
 
 		$("#searchModal").on('shown.bs.modal', function() {
 			getMostPopular();
+			$('#title-search-result').hide();
 		});
 
 		function getMostPopular() {
+			$('#most-popular-start').html('');
+			$('#most-popular-end').html('');
 			$.ajax({
 				url: "{{ url('search/most-populer') }}",
 				type: 'get',
