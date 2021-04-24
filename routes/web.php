@@ -25,6 +25,8 @@ Route::get('register/success', 'Front\RegisterController@success');
 Route::get('umkm', 'Front\UmkmController@index');
 Route::get('umkm/{id}', 'Front\UmkmController@show');
 
+Route::get('search', 'Front\SearchController@get');
+Route::get('search/most-populer', 'Front\SearchController@mostPopuler');
 
 Route::get('product', 'Front\ProductController@index');
 Route::get('product/{id}', 'Front\ProductController@show');

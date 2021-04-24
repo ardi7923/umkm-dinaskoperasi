@@ -80,7 +80,7 @@
 
 							
 								<form action="{{ url('product') }}" method="get">
-									<input name="q" placeholder="Cari Produk Disini....." type="search" >
+									<input id="input-search" name="q" placeholder="Cari Produk Disini....." type="search" data-toggle="modal" data-target="#exampleModal" autocomplete="off">
 									<button class="btnn"><i class="ti-search"></i></button>
 								</form>
 							</div>

@@ -28,13 +28,16 @@ class ProductController extends Controller
                 ->orWhereHas('umkm',function(Builder $query) use ($q){
                     return $query->where('district', 'like', '%' . $q . '%');
                 })
+                ->where('stock','>',0)
+                ->verified()
                 ->orWhereHas('category', function (Builder $query) use ($q) {
                     return $query->where('name', 'like', '%' . $q . '%');
                 })->verified()
+                ->where('stock','>',0)
                 ->get()->sortByDesc(function($products)
                 {
                         return $products->orderlists()->sum('ammount');
-                });;
+                });
 
             
         } else {
