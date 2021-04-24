@@ -176,8 +176,11 @@
 				},
 
 				success: function(response) {
-
-					if(response.length > 0){
+					if(keyword.length == 0){
+						$('#search-result').html(``);
+					}else if(response.length == 0){
+						$('#search-result').html(` <a href="{{ url('product?q=') }}`+ keyword+` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> `+ keyword +`  </p> </a>`);
+					} else if(response.length > 0){
 						var url = '{{ URL::asset('/') }}';
 						$('#search-result').html(``);
 						for(i = 0; i < 5; i++){
@@ -192,10 +195,6 @@
 								</a>
 								`);
 						}
-					}else if(response.length == 0){
-						$('#search-result').html(` <a href="{{ url('product?q=') }}`+ keyword+` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> `+ keyword +`  </p> </a>`);
-					}else if(keyword.length == 0){
-						$('#search-result').html(``);
 					}
 				}
 			 });
