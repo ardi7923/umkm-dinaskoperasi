@@ -62,8 +62,9 @@
 <script>
   var statistiks = [];
   var label = [];
-  @foreach($umkms as $u)
-  statistiks.push('{{$u->orderList()->sum("ammount")}}');
+  
+  @foreach($datas as $u)
+  statistiks.push('{{$u->ammount}}');
   label.push('{{{ $u->store_name }}}')
   @endforeach
 
