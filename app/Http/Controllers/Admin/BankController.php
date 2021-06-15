@@ -59,12 +59,11 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         return $this->crud_service->setModel($this->model)
-                            ->setRequest( $request )
-                            ->setValidator( $this->validator )
-                            ->setFacade( $this->facade )
-                            ->save();
+                                  ->setRequest( $request )
+                                  ->setValidator( $this->validator )
+                                  ->setFacade( $this->facade )
+                                  ->save();
     }
 
     /**

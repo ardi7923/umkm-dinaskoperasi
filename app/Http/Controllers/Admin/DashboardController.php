@@ -58,13 +58,18 @@ class DashboardController extends Controller
     private function queryStatistik($month)
     {
         if(Auth::user()->role == 'UMKM'){
+
+
             return OrderList::whereHas('product.umkm',function($q){
                 $q->where('id',Auth::user()->umkm_id);
             })->whereHas('order',function($q) use ($month){
-                $q->whereMonth('date',$month);
-            })->count();
+                $q->whereMonth('date',$month)->where('sts',2);
+            })->sum('ammount');
+
         }else{
-            return Order::whereMonth('date',$month)->count();
+            return OrderList::whereHas('order',function($q) use ($month){
+                $q->whereMonth('date',$month)->where('sts',2);
+            })->sum('ammount');
         }
         
     }
