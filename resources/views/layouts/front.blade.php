@@ -170,7 +170,7 @@
 			$('#title-search-result').show();
 			keyword = $(this).val();
 			$.ajax({
-				url: "{{ url('search?q=') }}"+keyword,
+				url: "{{ url('search?q=') }}" + keyword,
 				type: 'get',
 				dataType: 'json',
 				beforeSend: function() {
@@ -178,21 +178,21 @@
 				},
 
 				success: function(response) {
-					if(keyword.length == 0){
+					if (keyword.length == 0) {
 						$('#title-search-result').hide();
 						$('#search-result').html(``);
-					}else if(response.length == 0){
-						$('#search-result').html(` <a href="{{ url('product?q=') }}`+ keyword+` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> `+ keyword +`  </p> </a>`);
-					} else if(response.length > 0){
-						var url = '{{ URL::asset('/') }}';
+					} else if (response.length == 0) {
+						$('#search-result').html(` <a href="{{ url('product?q=') }}` + keyword + ` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> ` + keyword + `  </p> </a>`);
+					} else if (response.length > 0) {
+						var url = '{{ URL::asset(' / ') }}';
 						$('#search-result').html(``);
-						for(i = 0; i < 5; i++){
+						for (i = 0; i < 5; i++) {
 							$('#search-result').append(`
-								<a href="{{ url('product?q=') }}`+ response[i]['name']+` ">
+								<a href="{{ url('product?q=') }}` + response[i]['name'] + ` ">
 									<div class="catalog-item">
-										<img src="`+url+ response[i]['image'] +`" alt="">
+										<img src="` + url + response[i]['image'] + `" alt="">
 										<div class="label-area">
-											<span>`+ response[i]['name'] +`</span>
+											<span>` + response[i]['name'] + `</span>
 										</div>
 									</div>
 								</a>
@@ -200,7 +200,7 @@
 						}
 					}
 				}
-			 });
+			});
 		});
 
 		$('#input-search').click(function() {
@@ -220,15 +220,15 @@
 				type: 'get',
 				dataType: 'json',
 				success: function(response) {
-					var url = '{{ URL::asset('/') }}';
-					for(i = 0; i < 4; i++){
+					var url = '{{ URL::asset(' / ') }}';
+					for (i = 0; i < 4; i++) {
 						$('#most-popular-start').append(`
-							 <a href="{{ url('product?q=') }}`+ response[i]['product_name']+` ">
+							 <a href="{{ url('product?q=') }}` + response[i]['product_name'] + ` ">
 								<div class="catalog-item">
-									<img src="`+url+ response[i]['product_image'] +`" alt="">
+									<img src="` + url + response[i]['product_image'] + `" alt="">
 									<div class="label-area">
-										<span>`+ response[i]['product_name'] +`</span>
-										<small>`+ response[i]['frequency'] +` pencarian</small>
+										<span>` + response[i]['product_name'] + `</span>
+										<small>` + response[i]['frequency'] + ` pencarian</small>
 					 				</div>
 					 			</div>
 							</a>
@@ -236,28 +236,28 @@
 					 	`)
 					}
 
-					for(i = 4; i < 8; i++){
+					for (i = 4; i < 8; i++) {
 						$('#most-popular-end').append(`
-							<a href="{{ url('product?q=') }}`+ response[i]['product_name']+` ">
+							<a href="{{ url('product?q=') }}` + response[i]['product_name'] + ` ">
 								<div class="catalog-item">
-									<img src="`+url+ response[i]['product_image'] +`" alt="">
+									<img src="` + url + response[i]['product_image'] + `" alt="">
 									<div class="label-area">
-										<span>`+ response[i]['product_name'] +`</span>
-										<small>`+ response[i]['frequency'] +` pencarian</small>
+										<span>` + response[i]['product_name'] + `</span>
+										<small>` + response[i]['frequency'] + ` pencarian</small>
 					 				</div>
 					 			</div>
 							</a>		
 					 	`)
 					}
-						
-							
-				
-				
-						
-					
-						
 
-					
+
+
+
+
+
+
+
+
 				}
 			});
 
@@ -265,6 +265,18 @@
 		}
 	</script>
 	@yield('js')
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-K688F3K85W"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-K688F3K85W');
+	</script>
 </body>
 
 </html>
