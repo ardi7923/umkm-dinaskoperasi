@@ -1,5 +1,10 @@
 @extends('layouts.front')
 
+@section('seo-title')Umkm Sulsel - Maju Bersama UMKM @endsection
+@section('seo-description')Program Dari Dinas Koperasi dan umkm, membantu  umkm dalam penjualan produk @endsection
+@section('seo-type')Home @endsection
+@section('seo-image'){{ asset('logo.png') }} @endsection
+
 @section('styles_page')
 <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/alertify.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{  asset('plugins/alertify/css/themes/bootstrap.min.css')}}">

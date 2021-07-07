@@ -2,6 +2,8 @@
 <html lang="zxx">
 
 <head>
+	<!-- Title Tag  -->
+	<title>@yield('seo-title')</title>
 	<!-- Meta Tag -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +11,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="token" content="{{ csrf_token() }}">
-	<!-- Title Tag  -->
-	<title>@yield('title') - Umkm Sulsel</title>
+
+	<meta property="og:url" content="{{ Request::url() }}" />
+	<meta property="og:type" content="@yield('seo-type')" />
+	<meta property="og:title" content="@yield('seo-title')" />
+	<meta property="og:description" content="@yield('seo-description')" />
+	<meta property="og:image" content="@yield('seo-image')" />
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->

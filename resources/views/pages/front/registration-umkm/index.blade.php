@@ -1,8 +1,9 @@
 @extends('layouts.front')
 
-@section('title')
-	Pendaftaran Mitra
-@endsection
+@section('seo-title')Umkm Sulsel - Registrasi Umkm @endsection
+@section('seo-description')Daftarkan Usaha anda dan sukses bersama kami @endsection
+@section('seo-type')registration-umkm @endsection
+@section('seo-image'){{ asset('logo.png') }} @endsection
 
 @section('styles_page')
   <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}">

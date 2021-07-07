@@ -1,5 +1,10 @@
 @extends('layouts.front')
 
+@section('seo-title')Umkm Sulsel - Umkm @endsection
+@section('seo-description')Umkm yang terdaftar di dinas koperasi dan Umkm Sulsel @endsection
+@section('seo-type')umkm @endsection
+@section('seo-image'){{ asset('logo.png') }} @endsection
+
 @section('content')
 <!-- Breadcrumbs -->
 	<div class="breadcrumbs">

@@ -1,5 +1,10 @@
 @extends('layouts.front')
 
+@section('seo-title')Umkm Sulsel - Produk @endsection
+@section('seo-description')Produk Dari Umkm Sulsel @endsection
+@section('seo-type')product @endsection
+@section('seo-image'){{ asset('logo.png') }} @endsection
+
 @section('content')
 <!-- Breadcrumbs -->
 <div class="breadcrumbs">
