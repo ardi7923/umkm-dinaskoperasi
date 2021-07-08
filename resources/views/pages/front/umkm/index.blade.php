@@ -36,8 +36,8 @@
 			<div class="col-lg-4 col-md-6 col-12">
 				<!-- Start Single Blog  -->
 				<div class="shop-single-blog">
-					<a href="{{ url('umkm/'.$u->id) }}">
-						<img src="{{ asset($u->logo) }}" alt="#">
+					<a href="{{ url('umkm/'.$u->slug) }}">
+						<img src="{{ asset($u->logo) }}" alt="{{ $u->name }}">
 					</a>
 					<div class="content">
 						<!-- <p class="date">22 July , 2020. Monday</p> -->

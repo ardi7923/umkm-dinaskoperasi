@@ -41,7 +41,7 @@ Pendaftaran Mitra
 					<div class="single-head">
 						<div class="single-info">
 							<h4 class="title">{{ strtoupper($umkm->store_name) }}:</h4>
-							<img src="{{ asset($umkm->logo) }}" alt="">
+							<img src="{{ asset($umkm->logo) }}" alt="{{ $umkm->name }}">
 						</div>
 
 						<div class="single-info">
@@ -64,8 +64,8 @@ Pendaftaran Mitra
 							<div class="single-product">
 								<div class="product-img">
 									<a class="product-detail" data-url="{{ url('product/'.$p->id) }}">
-										<img class="default-img" src="{{ asset($p->image) }}" style="width: 350px;height: 250px" alt="#">
-										<img class="hover-img" src="{{ asset($p->image) }}" style="width: 350px;height: 250px" alt="#">
+										<img class="default-img" src="{{ asset($p->image) }}" alt="{{ $p->name }}" style="width: 350px;height: 250px" alt="#">
+										<img class="hover-img" src="{{ asset($p->image) }}" alt="{{ $p->name }}" style="width: 350px;height: 250px" alt="#">
 									</a>
 									<div class="button-head">
 										<div class="product-action">
