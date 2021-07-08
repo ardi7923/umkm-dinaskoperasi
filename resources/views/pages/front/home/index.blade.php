@@ -82,8 +82,8 @@
 										<div class="single-product">
 											<div class="product-img">
 												<a class="product-detail" data-url="{{ url('product/'.$p->id) }}">
-													<img class="default-img" src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
-													<img class="hover-img" src="{{ $p->image }}" style="width: 350px;height: 250px" alt="#">
+													<img class="default-img" src="{{ $p->image }}" alt="{{ $p->name }}" style="width: 350px;height: 250px" alt="#">
+													<img class="hover-img" src="{{ $p->image }}" alt="{{ $p->name }}" style="width: 350px;height: 250px" alt="#">
 												</a>
 												<div class="button-head">
 													<div class="product-action">
@@ -151,7 +151,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="list-image overlay">
-								<img src="{{ asset($os->image) }}" style="width:115px;height:140px;
+								<img src="{{ asset($os->image) }}" alt="{{ $os->name }}" style="width:115px;height:140px;
 										" alt="#">
 								<a href="{{ url('cart/'.$os->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
 							</div>
@@ -191,7 +191,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="list-image overlay">
-								<img src="{{ asset($bs->image) }}" style="width:115px;height:140px;
+								<img src="{{ asset($bs->image) }}" alt="{{ $bs->name }}" style="width:115px;height:140px;
 										!important" alt="#">
 								<a href="{{ url('cart/'.$bs->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
 							</div>
@@ -231,7 +231,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="list-image overlay">
-								<img src="{{ asset($r->image) }}" style="width:115px;height:140px;
+								<img src="{{ asset($r->image) }}" alt="{{ $r->name }}" style="width:115px;height:140px;
 										!important" alt="#">
 								<a href="{{ url('cart/'.$r->id) }}" class="buy"><i class="fa fa-shopping-bag"></i></a>
 							</div>
