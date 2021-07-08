@@ -8,6 +8,11 @@ Pendaftaran Mitra
 
 @endsection
 
+@section('seo-title')Umkm Sulsel - {{ $umkm->store_name }} @endsection
+@section('seo-description')Umkm yang terdaftar di dinas koperasi dan Umkm Sulsel @endsection
+@section('seo-type')umkm/{{ $umkm->slug }} @endsection
+@section('seo-image'){{ asset('logo.png') }} @endsection
+
 @section('content')
 <!-- Breadcrumbs -->
 <div class="breadcrumbs">
