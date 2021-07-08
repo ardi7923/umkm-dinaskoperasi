@@ -21,6 +21,7 @@ class CreateUmkmsTable extends Migration
             $table->date('birthday');
             $table->string('phone');
             $table->string('store_name');
+            $table->string('slug')->unique();
             $table->string('address');
             $table->string('logo');
             $table->boolean('verify')->default(0);

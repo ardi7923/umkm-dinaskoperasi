@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Image;
 Use App\Models\Umkm;
 use App\Models\District;
+use Illuminate\Support\Str;
 
 class RegistrationUmkmController extends Controller
 {
@@ -27,7 +28,7 @@ class RegistrationUmkmController extends Controller
 			'birthday'   => 'required',
 			'phone'      => 'required',
 			'address'    => 'required',
-			'store_name' => 'required',
+			'store_name' => 'required|unique',
 			'logo'       => 'required|image|max:2048'
         ]);
         
@@ -48,6 +49,7 @@ class RegistrationUmkmController extends Controller
 								'address'    => $request->address,
                                 'district'   => $request->district,
 								'store_name' => $request->store_name,
+                                'slug'       => Str::slug($request->store_name),
 								'logo'       => $namaFile,
 
 

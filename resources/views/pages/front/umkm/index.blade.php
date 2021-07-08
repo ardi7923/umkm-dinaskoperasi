@@ -41,7 +41,7 @@
 					</a>
 					<div class="content">
 						<!-- <p class="date">22 July , 2020. Monday</p> -->
-						<a href="{{ url('umkm/'.$u->id) }}" class="title">{{ $u->store_name }}</a>
+						<a href="{{ url('umkm/'.$u->slug) }}" class="title">{{ $u->store_name }}</a>
 						<!-- <a href="#" class="more-btn">Continue Reading</a> -->
 					</div>
 				</div>

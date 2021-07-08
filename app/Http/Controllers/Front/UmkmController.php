@@ -14,9 +14,9 @@ class UmkmController extends Controller
     	return view('pages.front.umkm.index',compact('umkms'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-    	$umkm = Umkm::with('products')->find($id);
+    	$umkm = Umkm::where('slug',$slug)->with('products')->first();
     	return view('pages.front.umkm.show',compact('umkm'));
     }
 }
