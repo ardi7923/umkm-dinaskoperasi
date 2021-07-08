@@ -191,13 +191,13 @@
 					} else if (response.length == 0) {
 						$('#search-result').html(` <a href="{{ url('product?q=') }}` + keyword + ` ">  <p class="search-result-item"> <i class="fa fa-search" style="margin-right:20px"></i> ` + keyword + `  </p> </a>`);
 					} else if (response.length > 0) {
-						var url = '{{ URL::asset() }}';
+						var url = '{{ URL::asset("") }}';
 						$('#search-result').html(``);
 						for (i = 0; i < 5; i++) {
 							$('#search-result').append(`
 								<a href="{{ url('product?q=') }}` + response[i]['name'] + ` ">
 									<div class="catalog-item">
-										<img src="` + url + response[i]['image'] + `" alt="">
+										<img src="`+ response[i]['image'] + `" alt="">
 										<div class="label-area">
 											<span>` + response[i]['name'] + `</span>
 										</div>
@@ -232,7 +232,7 @@
 						$('#most-popular-start').append(`
 							 <a href="{{ url('product?q=') }}` + response[i]['product_name'] + ` ">
 								<div class="catalog-item">
-									<img src="` + url + response[i]['product_image'] + `" alt="">
+									<img src="`+ response[i]['product_image'] + `" alt="">
 									<div class="label-area">
 										<span>` + response[i]['product_name'] + `</span>
 										<small>` + response[i]['frequency'] + ` pencarian</small>
