@@ -247,7 +247,7 @@
 						$('#most-popular-end').append(`
 							<a href="{{ url('product?q=') }}` + response[i]['product_name'] + ` ">
 								<div class="catalog-item">
-									<img src="` + url + response[i]['product_image'] + `" alt="">
+									<img src="`+ response[i]['product_image'] + `" alt="">
 									<div class="label-area">
 										<span>` + response[i]['product_name'] + `</span>
 										<small>` + response[i]['frequency'] + ` pencarian</small>
