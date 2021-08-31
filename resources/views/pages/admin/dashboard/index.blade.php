@@ -93,7 +93,7 @@
 
           <div class="row">
 
-            <!-- Area Chart -->
+            <!-- Area  -->
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -114,8 +114,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area">
-                      <canvas id="myChart" width="400" height="135"></canvas>
+                  <div class="-area">
+                      <canvas id="my" width="400" height="135"></canvas>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
 @endsection
 
 @section('scripts_page')
-  <script src="{{  asset('assets-admin/vendor/chart.js/Chart.min.js')}}"></script>
+  <script src="{{  asset('assets-admin/vendor/.js/.min.js')}}"></script>
   <script src="{{  asset('plugins/alertify/alertify.min.js')}}"></script>
 @endsection
 
@@ -148,8 +148,8 @@
     statistiks.push('{{$s}}');
   @endforeach
 
-  var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+  var ctx = document.getElementById('my').getContext('2d');
+var my = new (ctx, {
     type: 'bar',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt','Nov', 'Des'],

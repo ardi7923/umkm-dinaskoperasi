@@ -28,7 +28,7 @@ class RegistrationUmkmController extends Controller
 			'birthday'   => 'required',
 			'phone'      => 'required',
 			'address'    => 'required',
-			'store_name' => 'required|unique',
+			'store_name' => 'required|unique:umkms,store_name',
 			'logo'       => 'required|image|max:2048'
         ]);
         
