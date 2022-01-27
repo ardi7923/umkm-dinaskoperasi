@@ -54,7 +54,7 @@
 								<td> {{ $i+1 }} </td>
 								<td> {{ date_indo( $c->date ) }} </td>
 								<td> {{ $c->lists()->count() }} Item </td>
-								<td> Rp. {{ rupiah_format( $c->lists->sum('total_price') ) }} </td>
+								<td> Rp. {{ rupiah_format( $c->lists->sum('total_price')+$c->shipping_cost ) }} </td>
 								<td>
 									@if($c->sts == 0)
 									<span class="badge badge-danger"> Belum Mengirim Bukti </span>
