@@ -81,6 +81,11 @@ class User extends Authenticatable
         return ($this->district->name);
     }
 
+    // public function getShippingAttribute()
+    // {
+    //     return ($this->district->shipping_cost);
+    // }
+
     // public function scopeIsUmkm($query)
     // {
     //     return $query->where('role','UMKM');

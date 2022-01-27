@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserCart;
 use App\Models\Bank;
+use App\Models\District;
 use Auth;
 use App\Models\Order;
 use App\Models\OrderList;
@@ -21,7 +22,8 @@ class CheckoutController extends Controller
     public function index()
     {
         $banks = Bank::all();
-        return view('pages.front.checkout.index',compact('banks'));
+        $shipping_cost = District::findOrFail(Auth::user()->customer->district_id)->shipping_cost;
+        return view('pages.front.checkout.index',compact('banks','shipping_cost'));
     }
 
     /**
@@ -70,12 +72,14 @@ class CheckoutController extends Controller
             $carts = Auth::user()->carts()->get();
 
             DB::transaction(function () use ($request,$carts)   {
-              
+                $shipping_cost = District::findOrFail(Auth::user()->customer->district_id)->shipping_cost;
+
                 $order =   Order::create([ 
-                                          'date'    => now(), 
-                                          'sts'     => 0, 
-                                          'bank_id' => $request->bank_id,
-                                          'user_id' => Auth::user()->id,
+                                          'date'          => now(), 
+                                          'sts'           => 0, 
+                                          'bank_id'       => $request->bank_id,
+                                          'user_id'       => Auth::user()->id,
+                                          "shipping_cost" => $shipping_cost
                                       ]);
                 foreach ($carts as $key => $c) {
 

@@ -108,13 +108,15 @@
 									<div class="col-lg-4 col-md-7 col-12">
 										<div class="right">
 											<ul>
+
 												<li>Subtotal<span id="sub-total">{{ rupiah_format( $carts->sum('total') ) }}</span></li> 
+												<li>Biaya Pengiriman<span id="sub-total">{{  rupiah_format($shipping_cost)  }}</span></li> 
 												<li>Potongan<span id="total-discount">{{ rupiah_format( $carts->sum('total_discount') ) }}</span></li>
 												<li class="last" >
-													Total<span id="total"> Rp. {{ rupiah_format($carts->sum('total')) }} </span>
+													Total<span id="total"> Rp. {{ rupiah_format($carts->sum('total')+$shipping_cost) }} </span>
 												</li>
 												<input type="hidden" id="input-discount" value="{{$carts->sum('total_discount') }}">
-												<input type="hidden" id="input-total" value="{{$carts->sum('total') }}">
+												<input type="hidden" id="input-total" value="{{$carts->sum('total')}}">
 											</ul>
 											<div class="button5">
 												<form action="{{ url('checkout') }}" method="POST">

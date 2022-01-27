@@ -92,8 +92,9 @@
 								<div class="content">
 									<ul>
 										<li>Sub Total<span>{{ rupiah_format(Auth::user()->carts->sum('total')) }}</span></li>
+										<li>Biaya Pengiriman<span>{{ rupiah_format($shipping_cost) }}</span></li>
 										<li>Potongan<span style="color:red">-{{ rupiah_format(Auth::user()->carts->sum('total_discount')) }}</span></li> 
-										<li class="last">Total<span>Rp. {{ rupiah_format(Auth::user()->carts->sum('total') - Auth::user()->carts->sum('total_discount')) }}</span></li>
+										<li class="last">Total<span>Rp. {{ rupiah_format(Auth::user()->carts->sum('total') - Auth::user()->carts->sum('total_discount') + $shipping_cost) }}</span></li>
 									</ul>
 								</div>
 							</div>

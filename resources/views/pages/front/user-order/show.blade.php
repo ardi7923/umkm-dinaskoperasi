@@ -93,8 +93,9 @@
 								<div class="content">
 									<ul>
 									    <li>Sub Total<span>{{ rupiah_format($order->lists->sum('sub_total')) }}</span></li>
+										<li>Sub Total<span>{{ rupiah_format($order->shipping_cost) }}</span></li>
 										<li>Potongan<span style="color:red">-{{ rupiah_format($order->lists->sum('total_discount')) }}</span></li> 
-										<li class="last">Total<span>Rp. {{ rupiah_format( $order->lists->sum('total_price') ) }}</span></li>
+										<li class="last">Total<span>Rp. {{ rupiah_format( $order->lists->sum('total_price')+$order->shipping_cost ) }}</span></li>
 									</ul>
 								</div>
 							</div>

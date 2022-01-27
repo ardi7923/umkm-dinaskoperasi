@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\UserCart;
@@ -17,8 +18,8 @@ class CartController extends Controller
     public function index()
     {
         $carts = Auth::user()->carts;
-        
-        return view('pages.front.cart.index',compact('carts'));
+        $shipping_cost = District::findOrFail(Auth::user()->customer->district_id)->shipping_cost;
+        return view('pages.front.cart.index',compact('carts',"shipping_cost"));
     }
 
     /**
